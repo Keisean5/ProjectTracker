@@ -1,3 +1,3 @@
 # ProjectTracker
 
-This is a Test for Practicing GitHub
+I am Pushing this information from my VSCode
