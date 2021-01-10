@@ -1,0 +1,25 @@
+@model Ticket
+
+<a asp-action="UserProfile">Home</a>
+<h1>
+    @ViewBag.Project.ProjectTitle
+</h1>
+<form asp-action="CreateTicket" method="post">
+    <div class="form-group">
+        <label asp-for="TicketTitle"></label>
+        <input asp-for="TicketTitle"  class="form-control">
+        <span asp-validation-for="TicketTitle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TicketDescription"></label>
+        <input asp-for="TicketDescription"  class="form-control">
+        <span asp-validation-for="TicketDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TicketPriority"></label>
+        <input asp-for="TicketPriority"  class="form-control">
+        <span asp-validation-for="TicketPriority" class="text-danger"></span>
+    </div>
+    
+<button>Create Ticket</button>
+</form>

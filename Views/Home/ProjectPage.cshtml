@@ -1,0 +1,51 @@
+@{
+    Project project = ViewBag.Project;
+}
+<p>Hi @ViewBag.User.FirstName!</p>
+@* Change UserProfile to DashBoard once Admin is Added *@
+<a asp-action="UserProfile">Home</a>
+
+<h1>@project.ProjectTitle</h1>
+
+<h3>Description: </h3>
+<h4>@project.ProjectDescription</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ticket ID</th>
+            <th>Ticket Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Posted By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Ticket ticket in ViewBag.ProjectTickets){
+            @if(project.ProjectId == ticket.ProjectId){
+            <tr>
+                <td>@ticket.TicketId</td>
+                <td>@ticket.TicketTitle</td>
+                <td>@ticket.TicketPriority</td>
+                <td>@ticket.TicketStatus</td>
+                <td>@ticket.CreatedAt.ToString("M/d/yyy")</td>
+                <td>@ticket.UpdatedAt.ToString("M/d/yyy")</td>
+                <td>@ticket.MadeBy.FirstName</td>
+                <td>
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
+                    | Edit | Delete | Complete
+                    </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+
+
+<a asp-action="TicketNew" asp-route-id="@project.ProjectId">Create Ticket</a>

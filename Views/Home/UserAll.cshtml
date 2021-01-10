@@ -1,0 +1,33 @@
+
+
+<h1>All Users</h1>
+
+<a asp-action="UserProfile">Home</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Joined At</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(User users in ViewBag.AllUsers){
+            <tr>
+                <td>@users.UserId</td>
+                <td>@users.FirstName</td>
+                <td>@users.LastName</td>
+                <td>@users.Email</td>
+                <td>@users.CreatedAt.ToString("M/d/yyyy")</td>
+                <td>@users.Admin</td>
+                <td><a asp-action="UserPage" asp-route-id="@users.UserId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

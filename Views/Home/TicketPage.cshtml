@@ -1,0 +1,16 @@
+@{
+    Ticket ticket = ViewBag.Ticket;
+}
+
+<a asp-action="UserProfile">Home</a>
+
+<h1>@ticket.TicketTitle</h1>
+<h3>Description:</h3>
+<p>@ticket.TicketDescription</p>
+<h4>@ticket.TicketPriority</h4>
+<h4>@ticket.TicketStatus</h4>
+<h4>@ticket.CreatedAt.ToString("M/d/yyyy")</h4>
+<h4>@ticket.UpdatedAt.ToString("M/d/yyyy")</h4>
+
+
+@* Add a Ticket history *@

@@ -1,0 +1,25 @@
+@model User
+@{
+    User user = ViewBag.SelectedUser;
+}
+<a asp-action="UserProfile">Home</a>
+<a asp-action="UserAll">Back To Users</a>
+
+
+<h1>First Name: @user.FirstName</h1>
+<h1>Last Name: @user.LastName</h1>
+<h1>Email: @user.Email</h1>
+<h1>Joined at: @user.CreatedAt.ToString("M/d/yyyy")</h1>
+<h1>Role: @user.Admin</h1>
+@* If userID != user in session *@
+<form asp-action="EditUser" method="post">
+    <div class="form-group">
+        <select asp-for="Admin">
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select>
+        <span asp-validation-for="Admin" class="text-danger"></span>
+    </div>
+<button>Update</button>
+</form>
+
