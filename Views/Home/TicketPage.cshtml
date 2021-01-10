@@ -12,5 +12,21 @@
 <h4>@ticket.CreatedAt.ToString("M/d/yyyy")</h4>
 <h4>@ticket.UpdatedAt.ToString("M/d/yyyy")</h4>
 
+@if(ticket.TicketStatus == "Open")
+    {
+        <h1>Status: Incomplete</h1>
+        <form asp-action="TicketComplete" asp-route-id="@ticket.TicketId" method="Post">
+        <button>Complete</button>
+        </form>
+    }
+    else if(ticket.TicketStatus == "Closed")
+    {
+        <h1>Status: Complete</h1>
+        <form asp-action="TicketIncomplete" asp-route-id="@ticket.TicketId" method="Post">
+        <button>Incomplete</button>
+        </form>
+    }
+
+<p></p>
 
 @* Add a Ticket history *@

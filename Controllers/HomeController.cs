@@ -106,10 +106,13 @@ namespace ProjectTracker.Controllers
             var user = _context.Users
                 .Find(id);
 
+            //sets previous information to updated form
             userToEdit.FirstName = user.FirstName;
             userToEdit.LastName = user.LastName;
             userToEdit.Email = user.Email;
+            //Only changing the Admin
             user.Admin = userToEdit.Admin;
+            //Show when It was updated
             user.UpdatedAt = DateTime.Now;
             
             _context.SaveChanges();
@@ -250,13 +253,65 @@ namespace ProjectTracker.Controllers
             }
 
             ViewBag.Ticket = _context.Tickets
+                
                 .FirstOrDefault(tick => tick.TicketId == id);
+
+            ViewBag.User = _context.Users
+                .Find(HttpContext.Session.GetInt32("UserId"));
         
         return View();
         }
 
 
+//--------------End of Tickets---------------------
 
+//----------------Complete--------------------------
+
+        [HttpPost("ticket/{id}/complete")]
+        public IActionResult TicketComplete(Ticket ticketToComplete, int id)
+        {
+            var ticket = _context.Tickets
+                .Find(id);
+
+            ticketToComplete.TicketTitle = ticket.TicketTitle;
+            ticketToComplete.TicketDescription = ticket.TicketDescription;
+            ticketToComplete.TicketPriority = ticket.TicketPriority;
+            ticketToComplete.UserId = ticket.UserId;
+            ticketToComplete.ProjectId = ticket.ProjectId;
+
+            ticket.TicketStatus = "Closed";
+
+            ticket.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("TicketPage");
+        }
+
+        [HttpPost("ticket/{id}/incomplete")]
+        public IActionResult TicketIncomplete(Ticket ticketToIncomplete, int id)
+        {
+            var ticket = _context.Tickets
+                .Find(id);
+
+            ticketToIncomplete.TicketTitle = ticket.TicketTitle;
+            ticketToIncomplete.TicketDescription = ticket.TicketDescription;
+            ticketToIncomplete.TicketPriority = ticket.TicketPriority;
+            ticketToIncomplete.UserId = ticket.UserId;
+            ticketToIncomplete.ProjectId = ticket.ProjectId;
+
+            ticket.TicketStatus = "Open";
+
+            ticket.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("TicketPage");
+        }
+
+//----------------End of Complete---------------------
 
 //----------------------------------------------------------
         public IActionResult Privacy()

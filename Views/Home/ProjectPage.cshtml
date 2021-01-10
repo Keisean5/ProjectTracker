@@ -16,10 +16,10 @@
             <th>Ticket ID</th>
             <th>Ticket Title</th>
             <th>Priority</th>
-            <th>Status</th>
             <th>Created</th>
             <th>Updated</th>
             <th>Posted By</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -30,13 +30,20 @@
                 <td>@ticket.TicketId</td>
                 <td>@ticket.TicketTitle</td>
                 <td>@ticket.TicketPriority</td>
-                <td>@ticket.TicketStatus</td>
                 <td>@ticket.CreatedAt.ToString("M/d/yyy")</td>
                 <td>@ticket.UpdatedAt.ToString("M/d/yyy")</td>
                 <td>@ticket.MadeBy.FirstName</td>
+                    @if(ticket.TicketStatus == "Open")
+                    {
+                    <td>Incomplete</td>
+                    }
+                    else if(ticket.TicketStatus == "Closed")
+                    {
+                        <td>Complete</td>
+                    }
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
-                    | Edit | Delete | Complete
+                    | Edit | Delete
                     </td>
             </tr>
             }

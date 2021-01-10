@@ -25,5 +25,7 @@ namespace ProjectTracker.Models
         public User MadeBy {get;set;}
         public int ProjectId {get;set;}
         public Project TicketFor {get;set;}
+
+
     }
 }
