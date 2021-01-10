@@ -3,7 +3,9 @@
 }
 
 <a asp-action="UserProfile">Home</a>
-
+<br>
+<a asp-action="ProjectPage" asp-route-id="@ticket.ProjectId">Project</a>
+<h1>Project ID = @ticket.ProjectId</h1>
 <h1>@ticket.TicketTitle</h1>
 <h3>Description:</h3>
 <p>@ticket.TicketDescription</p>

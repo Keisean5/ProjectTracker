@@ -253,7 +253,7 @@ namespace ProjectTracker.Controllers
             }
 
             ViewBag.Ticket = _context.Tickets
-                
+                .Include(tick => tick.TicketFor)
                 .FirstOrDefault(tick => tick.TicketId == id);
 
             ViewBag.User = _context.Users
