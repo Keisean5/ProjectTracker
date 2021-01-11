@@ -1,10 +1,10 @@
 @model Ticket
 
 <a asp-action="UserProfile">Home</a>
-<h1>
-    @ViewBag.Project.ProjectTitle
-</h1>
-<form asp-action="CreateTicket" method="post">
+
+<h1>Edit @ViewBag.TicketToEdit.TicketTitle</h1>
+
+<form asp-action="UpdateTicket" method="post">
     <div class="form-group">
         <label asp-for="TicketTitle"></label>
         <input asp-for="TicketTitle"  class="form-control">
@@ -19,11 +19,10 @@
         <label asp-for="TicketPriority"></label>
         <select asp-for="TicketPriority"  class="form-control">
             <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
+            <option value="Medium">Meduim</option>
             <option value="High">High</option>
         </select>
         <span asp-validation-for="TicketPriority" class="text-danger"></span>
     </div>
-    
-<button>Create Ticket</button>
+<button>Update</button>
 </form>

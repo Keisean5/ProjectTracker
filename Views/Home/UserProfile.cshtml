@@ -2,7 +2,9 @@
 
 <p>Hi @ViewBag.User.FirstName!</p>
 <h1>Home Page</h1>
-
+<br>
+<a asp-action="MyProfile" asp-route-id="@ViewBag.User.UserId">My Profile</a>
+<br>
 @* note that we're sending to a different controller *@
 <a asp-action="Logout" asp-controller="Users">Log Out</a>
 <a asp-action="UserAll">View Users</a>

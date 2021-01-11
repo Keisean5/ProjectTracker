@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using ProjectTracker.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProjectTracker.Controllers
 {
@@ -83,7 +84,7 @@ namespace ProjectTracker.Controllers
         }
 
         [HttpGet("user/update/{id}")]
-        public IActionResult UserUpdate(int id)
+        public IActionResult UserProfileUpdate(int id)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             //protects the page from non-logged in users
@@ -98,6 +99,42 @@ namespace ProjectTracker.Controllers
             ViewBag.UserToUpdate = userToEdit;
         
         return View(userToEdit);
+        }
+
+        [HttpGet("profile/{id}")]
+        public IActionResult MyProfile(int id)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            //protects the page from non-logged in users
+            if(userId == null) // no user present
+            {
+                return RedirectToAction("LoginReg", "Users");
+            }
+
+            ViewBag.User = _context.Users
+                .Find(id);
+        
+        return View();
+        }
+
+
+        [HttpPost("profile/edit/{id}")]
+        public IActionResult EditProfile(User profileToEdit, int id)
+        {
+
+            var profile = _context.Users
+                .Find(id);
+
+            profile.FirstName = profileToEdit.FirstName;
+            profile.LastName = profileToEdit.LastName;
+            profile.Email = profileToEdit.Email;
+
+            profileToEdit.Password = profile.Password;
+            profileToEdit.Confirm = profile.Confirm;
+            profileToEdit.Admin = profile.Admin;
+
+            _context.SaveChanges();
+            return RedirectToAction("MyProfile");
         }
 
         [HttpPost("user/edit/{id}")]
@@ -263,10 +300,6 @@ namespace ProjectTracker.Controllers
         }
 
 
-//--------------End of Tickets---------------------
-
-//----------------Complete--------------------------
-
         [HttpPost("ticket/{id}/complete")]
         public IActionResult TicketComplete(Ticket ticketToComplete, int id)
         {
@@ -311,7 +344,49 @@ namespace ProjectTracker.Controllers
             return RedirectToAction("TicketPage");
         }
 
-//----------------End of Complete---------------------
+
+        [HttpGet("ticket/{id}/edit")]
+        public IActionResult TicketEdit(int id)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if(userId == null)
+            {
+                return RedirectToAction("LoginReg", "Users");
+            }
+
+            var TicketToEdit = _context.Tickets
+                .Find(id);
+
+            ViewBag.TicketToEdit = TicketToEdit;
+        
+        return View(TicketToEdit);
+        }
+
+        [HttpPost("ticket/update/{id}")]
+        public IActionResult UpdateTicket(Ticket ticketToUpdate, int id)
+        {
+            var ticket = _context.Tickets
+                .Find(id);
+
+            ticket.TicketTitle = ticketToUpdate.TicketTitle;
+            ticket.TicketDescription = ticketToUpdate.TicketDescription;
+            ticket.TicketPriority = ticketToUpdate.TicketPriority;
+            
+            ticketToUpdate.TicketStatus = ticket.TicketStatus;
+            ticketToUpdate.UserId = ticket.UserId;
+            ticketToUpdate.ProjectId = ticket.ProjectId;
+
+            ticket.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("TicketPage");
+        }
+
+
+
+//--------------End of Tickets---------------------
+
 
 //----------------------------------------------------------
         public IActionResult Privacy()
