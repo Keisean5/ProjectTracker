@@ -9,7 +9,10 @@
 
 <h3>Description: </h3>
 <h4>@project.ProjectDescription</h4>
-
+<br>
+<br>
+<h1>Incomplete Tickets</h1>
+<br>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -25,7 +28,7 @@
     </thead>
     <tbody>
         @foreach(Ticket ticket in ViewBag.ProjectTickets){
-            @if(project.ProjectId == ticket.ProjectId){
+            @if(project.ProjectId == ticket.ProjectId && ticket.TicketStatus == "Open"){
             <tr>
                 <td>@ticket.TicketId</td>
                 <td>@ticket.TicketTitle</td>
@@ -33,14 +36,44 @@
                 <td>@ticket.CreatedAt.ToString("M/d/yyy")</td>
                 <td>@ticket.UpdatedAt.ToString("M/d/yyy")</td>
                 <td>@ticket.MadeBy.FirstName</td>
-                    @if(ticket.TicketStatus == "Open")
-                    {
                     <td>Incomplete</td>
-                    }
-                    else if(ticket.TicketStatus == "Closed")
-                    {
-                        <td>Complete</td>
-                    }
+                <td>
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
+                    | Edit | Delete
+                    </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+<br>
+<br>
+<h1>Completed Tickets</h1>
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ticket ID</th>
+            <th>Ticket Title</th>
+            <th>Priority</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Posted By</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Ticket ticket in ViewBag.ProjectTickets){
+            @if(project.ProjectId == ticket.ProjectId && ticket.TicketStatus == "Closed"){
+            <tr>
+                <td>@ticket.TicketId</td>
+                <td>@ticket.TicketTitle</td>
+                <td>@ticket.TicketPriority</td>
+                <td>@ticket.CreatedAt.ToString("M/d/yyy")</td>
+                <td>@ticket.UpdatedAt.ToString("M/d/yyy")</td>
+                <td>@ticket.MadeBy.FirstName</td>
+                <td>Complete</td>
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
                     | Edit | Delete
