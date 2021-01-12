@@ -72,3 +72,4 @@ C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\TicketEdit.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\UserProfileUpdate.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\MyProfile.cshtml.g.cs
+C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\ChangePassword.cshtml.g.cs
