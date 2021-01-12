@@ -14472,6 +14472,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\ProjectEdit.cshtml",
+      "TargetPath": "Views\\Home\\ProjectEdit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"

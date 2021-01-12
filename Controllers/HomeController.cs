@@ -227,6 +227,42 @@ namespace ProjectTracker.Controllers
         
         return View();
         }
+
+        [HttpGet("project/{id}/edit")]
+        public IActionResult ProjectEdit(int id)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            //protects the page from non-logged in users
+            if(userId == null) // no user present
+            {
+                return RedirectToAction("LoginReg", "Users");
+            }
+
+            var ProjectToEdit = _context.Projects
+                .Find(id);
+
+            ViewBag.ProjectToEdit = ProjectToEdit;
+        
+        return View(ProjectToEdit);
+        }
+
+        [HttpPost("project/{id}/update")]
+        public IActionResult UpdateProject(Project projectToUpdate, int id)
+        {
+            var project = _context.Projects
+                .Find(id);
+
+            project.ProjectTitle = projectToUpdate.ProjectTitle;
+            project.ProjectDescription = projectToUpdate.ProjectDescription;
+            project.UpdatedAt = DateTime.Now;
+
+            projectToUpdate.UserId = project.UserId;
+
+            _context.SaveChanges();
+        
+            return RedirectToAction("ProjectPage");
+        }
+
 //------------End of Projects----------------------
 
 
