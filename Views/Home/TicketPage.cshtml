@@ -28,7 +28,11 @@
         <button>Incomplete</button>
         </form>
     }
-
-<a asp-action="TicketEdit" asp-route-itemid="@ticket.TicketId"><button>Edit</button></a>
+<br>
+<br>
+<a asp-action="TicketEdit" asp-route-id="@ticket.TicketId"><button>Edit</button></a>
+<br>
+<br>
+<form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" method="post"><button>Delete</button></form>
 
 @* Add a Ticket history *@

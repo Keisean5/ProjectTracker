@@ -419,6 +419,19 @@ namespace ProjectTracker.Controllers
             return RedirectToAction("TicketPage");
         }
 
+        [HttpPost("ticket/{id}/delete")]
+        public IActionResult DeleteTicket(int id)
+        {
+            var ticketToDelete = _context.Tickets
+                .Find(id);
+
+            _context.Tickets.Remove(ticketToDelete);
+            _context.SaveChanges();
+        
+            
+            Console.WriteLine("A Ticket has been Deleted");
+            return RedirectToAction("UserProfile");
+        }
 
 
 //--------------End of Tickets---------------------

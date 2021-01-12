@@ -39,7 +39,7 @@
                     <td>Incomplete</td>
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
-                    | Edit | Delete
+                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" method="post"><button>Delete</button></form>
                     </td>
             </tr>
             }
