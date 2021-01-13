@@ -89,7 +89,12 @@ namespace ProjectTracker.Controllers
 
             ViewBag.User = _context.Users
                 .Find(HttpContext.Session.GetInt32("UserId"));
-        
+
+            ViewBag.AllComments = _context.Comments
+                .Include(user => user.CommentBy)
+                .ToList();
+
+
         return View();
         }
 
@@ -191,7 +196,22 @@ namespace ProjectTracker.Controllers
             return RedirectToAction("ProjectPage", "Project");
         }
 
+        [HttpPost("project/{name}/ticket/{id}/comment/create")]
+        public IActionResult CreateComment(Comment commentToCreate, string name, int id)
+        {
+            
+            //User logged in is commenting
+            commentToCreate.UserId = HttpContext.Session.GetInt32("UserId").GetValueOrDefault();
 
+            commentToCreate.TicketId = id;
+            
+            var project = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
 
+            _context.Add(commentToCreate);
+            _context.SaveChanges();
+            Console.WriteLine("A Comment was made");
+            return Redirect($"/project/{project.ProjectTitle}/ticket/{commentToCreate.TicketId}");
+        }
     }
 }

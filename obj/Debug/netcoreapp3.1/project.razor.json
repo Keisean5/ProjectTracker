@@ -14402,11 +14402,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket.cshtml\\TicketPage.cshtml",
-      "TargetPath": "Views\\Ticket.cshtml\\TicketPage.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -14422,18 +14417,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket.cshtml\\TicketEdit.cshtml",
-      "TargetPath": "Views\\Ticket.cshtml\\TicketEdit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\UserAll.cshtml",
       "TargetPath": "Views\\Home\\UserAll.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket.cshtml\\TicketNew.cshtml",
-      "TargetPath": "Views\\Ticket.cshtml\\TicketNew.cshtml",
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket\\TicketEdit.cshtml",
+      "TargetPath": "Views\\Ticket\\TicketEdit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14477,6 +14467,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket\\TicketPage.cshtml",
+      "TargetPath": "Views\\Ticket\\TicketPage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14499,6 +14494,11 @@
     {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Users\\LoginReg.cshtml",
       "TargetPath": "Views\\Users\\LoginReg.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket\\TicketNew.cshtml",
+      "TargetPath": "Views\\Ticket\\TicketNew.cshtml",
       "FileKind": "mvc"
     }
   ],

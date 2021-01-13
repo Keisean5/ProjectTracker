@@ -33,12 +33,12 @@
             <tr>
                 <td>@ticket.TicketTitle</td>
                 <td>@ticket.TicketPriority</td>
-                <td>@ticket.CreatedAt.ToString("M/d/yyy")</td>
-                <td>@ticket.UpdatedAt.ToString("M/d/yyy")</td>
+                <td>@ticket.CreatedAt.ToString("M/d/yyyy")</td>
+                <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
                 <td>@ticket.MadeBy.FirstName</td>
                     <td>Incomplete</td>
                 <td>
-                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket">Details</a> 
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">Details</a> 
                     | Edit | 
                     <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button>
                     </form>
@@ -77,7 +77,7 @@
                 <td>@ticket.MadeBy.FirstName</td>
                 <td>Complete</td>
                 <td>
-                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket">Details</a> 
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">Details</a> 
                     | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button>
                     </form>
                     </td>
