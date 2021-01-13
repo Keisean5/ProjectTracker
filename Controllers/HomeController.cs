@@ -200,11 +200,10 @@ namespace ProjectTracker.Controllers
             _context.Add(projectToCreate);
             _context.SaveChanges();
         
-            return Redirect($"/project/{projectToCreate.ProjectId}");
+            return Redirect($"/project/{projectToCreate.ProjectTitle}");
         }
-
-        [HttpGet("project/{id}")]
-        public IActionResult ProjectPage(int id)
+        [HttpGet("project/{name}")]
+        public IActionResult ProjectPage(string name)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             //protects the page from non-logged in users
@@ -215,7 +214,7 @@ namespace ProjectTracker.Controllers
             
             ViewBag.Project = _context.Projects
                 .Include(proj => proj.PostBy)
-                .FirstOrDefault(proj => proj.ProjectId == id);
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
 
             ViewBag.User = _context.Users
                 .Find(HttpContext.Session.GetInt32("UserId"));
@@ -228,8 +227,8 @@ namespace ProjectTracker.Controllers
         return View();
         }
 
-        [HttpGet("project/{id}/edit")]
-        public IActionResult ProjectEdit(int id)
+        [HttpGet("project/{name}/edit")]
+        public IActionResult ProjectEdit(string name)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             //protects the page from non-logged in users
@@ -239,18 +238,18 @@ namespace ProjectTracker.Controllers
             }
 
             var ProjectToEdit = _context.Projects
-                .Find(id);
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
 
             ViewBag.ProjectToEdit = ProjectToEdit;
         
         return View(ProjectToEdit);
         }
 
-        [HttpPost("project/{id}/update")]
-        public IActionResult UpdateProject(Project projectToUpdate, int id)
+        [HttpPost("project/{name}/update")]
+        public IActionResult UpdateProject(Project projectToUpdate, string name)
         {
             var project = _context.Projects
-                .Find(id);
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
 
             project.ProjectTitle = projectToUpdate.ProjectTitle;
             project.ProjectDescription = projectToUpdate.ProjectDescription;
@@ -260,7 +259,7 @@ namespace ProjectTracker.Controllers
 
             _context.SaveChanges();
         
-            return RedirectToAction("ProjectPage");
+            return Redirect($"/project/{projectToUpdate.ProjectTitle}");
         }
 
 //------------End of Projects----------------------
@@ -268,8 +267,8 @@ namespace ProjectTracker.Controllers
 
 //---------------Tickets---------------------------
 
-        [HttpGet("project/{id}/ticket/new")]
-        public IActionResult TicketNew(int id)
+        [HttpGet("project/{name}/ticket/new")]
+        public IActionResult TicketNew(string name)
         {
             //Protects page info
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -279,7 +278,7 @@ namespace ProjectTracker.Controllers
             }
 
             var projectId = _context.Projects
-                .Find(id);
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
 
             ViewBag.User = _context.Users
                 .Find(userId);
@@ -289,34 +288,35 @@ namespace ProjectTracker.Controllers
         return View();
         }
 
-        [HttpPost("project/{id}/ticket/create")]
-        public IActionResult CreateTicket(Ticket ticketToCreate, int id)
+        [HttpPost("project/{name}/ticket/create")]
+        public IActionResult CreateTicket(Ticket ticketToCreate, string name)
         {
-            if(!ModelState.IsValid)
-            {
-                ViewBag.Project = _context.Projects
-                    .Find(id);
-                ticketToCreate.ProjectId = id;
-                return View("TicketNew", ticketToCreate);
-            }
+            // if(!ModelState.IsValid)
+            // {
+            //     ViewBag.Project = _context.Projects
+            //         .Find(id);
+            //     ticketToCreate.ProjectId = id;
+            //     return View("TicketNew", ticketToCreate);
+            // }
 
             //Assign User who Posted the Ticket
             ticketToCreate.UserId = HttpContext.Session.GetInt32("UserId").GetValueOrDefault();
 
             //Grab project id
-            var projectId = id;
-            //Assign ticket id to Project
-            ticketToCreate.ProjectId = id;
+            var project = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
+            //Assign ticket to Project
+            ticketToCreate.ProjectId = project.ProjectId;
 
             _context.Add(ticketToCreate);
             _context.SaveChanges();
-        
+            Console.WriteLine("A Ticket was Created");
             //Go Back to the Project Details
-            return Redirect($"/project/{ticketToCreate.ProjectId}");
+            return Redirect($"/project/{project.ProjectTitle}");
         }
 
-        [HttpGet("ticket/{id}")]
-        public IActionResult TicketPage(int id)
+        [HttpGet("project/{name}/ticket/{id}")]
+        public IActionResult TicketPage(string name,int id)
         {
             //Protects page info
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -329,6 +329,9 @@ namespace ProjectTracker.Controllers
                 .Include(tick => tick.TicketFor)
                 .FirstOrDefault(tick => tick.TicketId == id);
 
+            ViewBag.Project = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
+
             ViewBag.User = _context.Users
                 .Find(HttpContext.Session.GetInt32("UserId"));
         
@@ -336,8 +339,8 @@ namespace ProjectTracker.Controllers
         }
 
 
-        [HttpPost("ticket/{id}/complete")]
-        public IActionResult TicketComplete(Ticket ticketToComplete, int id)
+        [HttpPost("project/{name}/ticket/{id}/complete")]
+        public IActionResult TicketComplete(Ticket ticketToComplete, string name, int id)
         {
             var ticket = _context.Tickets
                 .Find(id);
@@ -358,8 +361,8 @@ namespace ProjectTracker.Controllers
             return RedirectToAction("TicketPage");
         }
 
-        [HttpPost("ticket/{id}/incomplete")]
-        public IActionResult TicketIncomplete(Ticket ticketToIncomplete, int id)
+        [HttpPost("project/{name}/ticket/{id}/incomplete")]
+        public IActionResult TicketIncomplete(Ticket ticketToIncomplete, string name, int id)
         {
             var ticket = _context.Tickets
                 .Find(id);
@@ -381,8 +384,8 @@ namespace ProjectTracker.Controllers
         }
 
 
-        [HttpGet("ticket/{id}/edit")]
-        public IActionResult TicketEdit(int id)
+        [HttpGet("project/{name}/ticket/{id}/edit")]
+        public IActionResult TicketEdit(string name, int id)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if(userId == null)
@@ -398,8 +401,8 @@ namespace ProjectTracker.Controllers
         return View(TicketToEdit);
         }
 
-        [HttpPost("ticket/update/{id}")]
-        public IActionResult UpdateTicket(Ticket ticketToUpdate, int id)
+        [HttpPost("project/{name}/ticket/update/{id}")]
+        public IActionResult UpdateTicket(Ticket ticketToUpdate,string name, int id)
         {
             var ticket = _context.Tickets
                 .Find(id);
@@ -419,18 +422,18 @@ namespace ProjectTracker.Controllers
             return RedirectToAction("TicketPage");
         }
 
-        [HttpPost("ticket/{id}/delete")]
-        public IActionResult DeleteTicket(int id)
+        [HttpPost("project/{name}/ticket/{id}/delete")]
+        public IActionResult DeleteTicket(string name, int id)
         {
             var ticketToDelete = _context.Tickets
                 .Find(id);
-
+            var projectId = ticketToDelete.ProjectId;
             _context.Tickets.Remove(ticketToDelete);
             _context.SaveChanges();
         
-            
+            Console.WriteLine(projectId);
             Console.WriteLine("A Ticket has been Deleted");
-            return RedirectToAction("UserProfile");
+            return RedirectToAction("ProjectPage");
         }
 
 

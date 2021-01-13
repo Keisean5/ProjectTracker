@@ -11,7 +11,7 @@
 <h4>@project.ProjectDescription</h4>
 <br>
 <br>
-<a asp-action="ProjectEdit" asp-route-id="@project.ProjectId">Edit Project</a>
+<a asp-action="ProjectEdit" asp-route-name="@project.ProjectTitle">Edit Project</a>
 <br>
 <h1>Incomplete Tickets</h1>
 <br>
@@ -39,14 +39,14 @@
                     <td>Incomplete</td>
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
-                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" method="post"><button>Delete</button></form>
+                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" method="post"><button>Delete</button></form>
                     </td>
             </tr>
             }
         }
     </tbody>
 </table>
-<a asp-action="TicketNew" asp-route-id="@project.ProjectId">Create Ticket</a>
+<a asp-action="TicketNew" asp-route-name="@project.ProjectTitle">Create Ticket</a>
 <br>
 
 <br>

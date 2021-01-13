@@ -4,7 +4,7 @@
 
 <a asp-action="UserProfile">Home</a>
 <br>
-<a asp-action="ProjectPage" asp-route-id="@ticket.ProjectId">Project</a>
+<a asp-action="ProjectPage" asp-route-name="@ViewBag.Project.ProjectTitle">Project</a>
 
 <h1>Title: @ticket.TicketTitle</h1>
 <h3>Description:</h3>
@@ -30,9 +30,9 @@
     }
 <br>
 <br>
-<a asp-action="TicketEdit" asp-route-id="@ticket.TicketId"><button>Edit</button></a>
+<a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" ><button>Edit</button></a>
 <br>
 <br>
-<form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" method="post"><button>Delete</button></form>
+<form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" method="post"><button>Delete</button></form>
 
 @* Add a Ticket history *@
