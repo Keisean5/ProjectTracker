@@ -123,7 +123,17 @@ namespace ProjectTracker.Controllers
             return Redirect($"/project/{projectToUpdate.ProjectTitle}");
         }
 
+        [HttpPost("project/{name}/delete")]
+        public IActionResult DeleteProject(string name)
+        {
+            var projectToDelete = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
 
+            _context.Projects.Remove(projectToDelete);
+            _context.SaveChanges();
+        
+            return RedirectToAction("UserProfile", "Home");
+        }
 
 
     }

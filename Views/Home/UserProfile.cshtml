@@ -27,7 +27,11 @@
             <td>Incomplete</td>
             <td>@project.CreatedAt.ToString("M/d/yyy")</td>
             <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle"
-            asp-controller="Project">More Details</a></td>
+            asp-controller="Project">More Details</a>
+            |
+            <form asp-action="DeleteProject" asp-route-name="@project.ProjectTitle" asp-controller="Project" method="post"><button>Delete</button>
+            </form>
+            </td>
         </tr>
             }
     </tbody>

@@ -39,7 +39,9 @@
                     <td>Incomplete</td>
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket">Details</a> 
-                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button></form>
+                    | Edit | 
+                    <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button>
+                    </form>
                     </td>
             </tr>
             }
@@ -76,10 +78,15 @@
                 <td>Complete</td>
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket">Details</a> 
-                    | Edit | Delete
+                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button>
+                    </form>
                     </td>
             </tr>
             }
         }
     </tbody>
 </table>
+<br>
+<br>
+<form asp-action="DeleteTicket" asp-route-name="@project.ProjectTitle" method="post"><button>Delete</button>
+</form>
