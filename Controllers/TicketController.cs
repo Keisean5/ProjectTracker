@@ -186,7 +186,7 @@ namespace ProjectTracker.Controllers
             _context.Tickets.Remove(ticketToDelete);
             _context.SaveChanges();
         
-            Console.WriteLine(projectId);
+
             Console.WriteLine("A Ticket has been Deleted");
             return RedirectToAction("ProjectPage", "Project");
         }
