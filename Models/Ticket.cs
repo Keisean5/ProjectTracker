@@ -26,6 +26,6 @@ namespace ProjectTracker.Models
         public int ProjectId {get;set;}
         public Project TicketFor {get;set;}
 
-
+        public List<Comment> PostedComments {get;set;}
     }
 }
