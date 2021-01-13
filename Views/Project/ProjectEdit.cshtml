@@ -1,8 +1,10 @@
 @model Project
 
-<a asp-action="UserProfile">Home</a>
+<a asp-action="UserProfile" asp-controller="Home">Home</a>
 
-<form asp-action="CreateProject" method="post">
+<h1>Edit @ViewBag.ProjectToEdit.ProjectTitle</h1>
+
+<form asp-action="UpdateProject" method="post">
     <div class="form-group">
         <label asp-for="ProjectTitle"></label>
         <input asp-for="ProjectTitle"  class="form-control">
@@ -14,7 +16,5 @@
         <span asp-validation-for="ProjectDescription" class="text-danger"></span>
     </div>
     
-<button>Create</button>
+<button>Update</button>
 </form>
-<br>
-<a asp-action="UserProfile"><button>Cancel</button></a>

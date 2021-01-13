@@ -14392,8 +14392,18 @@
   "RootNamespace": "ProjectTracker",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Project\\ProjectNew.cshtml",
+      "TargetPath": "Views\\Project\\ProjectNew.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Users\\RegistrationForm.cshtml",
       "TargetPath": "Views\\Users\\RegistrationForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket.cshtml\\TicketPage.cshtml",
+      "TargetPath": "Views\\Ticket.cshtml\\TicketPage.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14402,13 +14412,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\ProjectNew.cshtml",
-      "TargetPath": "Views\\Home\\ProjectNew.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\TicketNew.cshtml",
-      "TargetPath": "Views\\Home\\TicketNew.cshtml",
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Project\\ProjectsAll.cshtml",
+      "TargetPath": "Views\\Project\\ProjectsAll.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14417,13 +14422,18 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\ProjectPage.cshtml",
-      "TargetPath": "Views\\Home\\ProjectPage.cshtml",
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket.cshtml\\TicketEdit.cshtml",
+      "TargetPath": "Views\\Ticket.cshtml\\TicketEdit.cshtml",
       "FileKind": "mvc"
     },
     {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\UserAll.cshtml",
       "TargetPath": "Views\\Home\\UserAll.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket.cshtml\\TicketNew.cshtml",
+      "TargetPath": "Views\\Ticket.cshtml\\TicketNew.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14462,6 +14472,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Project\\ProjectEdit.cshtml",
+      "TargetPath": "Views\\Project\\ProjectEdit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14472,28 +14487,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\ProjectEdit.cshtml",
-      "TargetPath": "Views\\Home\\ProjectEdit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\TicketPage.cshtml",
-      "TargetPath": "Views\\Home\\TicketPage.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\TicketEdit.cshtml",
-      "TargetPath": "Views\\Home\\TicketEdit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\ProjectsAll.cshtml",
-      "TargetPath": "Views\\Home\\ProjectsAll.cshtml",
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Project\\ProjectPage.cshtml",
+      "TargetPath": "Views\\Project\\ProjectPage.cshtml",
       "FileKind": "mvc"
     },
     {

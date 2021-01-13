@@ -4,9 +4,9 @@
 <h1>Home Page</h1>
 <br>
 <a asp-action="MyProfile" asp-route-id="@ViewBag.User.UserId">My Profile</a>
-<br>
-@* note that we're sending to a different controller *@
+|
 <a asp-action="Logout" asp-controller="Users">Log Out</a>
+|
 <a asp-action="UserAll">View Users</a>
 <table class="table table-striped">
     <thead>
@@ -26,9 +26,10 @@
             <td>DaBoss</td>
             <td>Incomplete</td>
             <td>@project.CreatedAt.ToString("M/d/yyy")</td>
-            <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle">More Details</a></td>
+            <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle"
+            asp-controller="Project">More Details</a></td>
         </tr>
             }
     </tbody>
 </table>
-<a asp-action="ProjectNew">Create New Project</a>
+<a asp-action="ProjectNew" asp-controller="Project">Create New Project</a>

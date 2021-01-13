@@ -3,7 +3,7 @@
 }
 <p>Hi @ViewBag.User.FirstName!</p>
 @* Change UserProfile to DashBoard once Admin is Added *@
-<a asp-action="UserProfile">Home</a>
+<a asp-action="UserProfile" asp-controller="Home">Home</a>
 
 <h1>@project.ProjectTitle</h1>
 
@@ -38,15 +38,15 @@
                 <td>@ticket.MadeBy.FirstName</td>
                     <td>Incomplete</td>
                 <td>
-                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
-                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" method="post"><button>Delete</button></form>
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket">Details</a> 
+                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button></form>
                     </td>
             </tr>
             }
         }
     </tbody>
 </table>
-<a asp-action="TicketNew" asp-route-name="@project.ProjectTitle">Create Ticket</a>
+<a asp-action="TicketNew" asp-route-name="@project.ProjectTitle" asp-controller="Ticket">Create Ticket</a>
 <br>
 
 <br>
@@ -75,7 +75,7 @@
                 <td>@ticket.MadeBy.FirstName</td>
                 <td>Complete</td>
                 <td>
-                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId">Details</a> 
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket">Details</a> 
                     | Edit | Delete
                     </td>
             </tr>
