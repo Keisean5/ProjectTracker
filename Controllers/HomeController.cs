@@ -45,7 +45,7 @@ namespace ProjectTracker.Controllers
             return View();
         }
 
-//-----------------Users---------------------
+
 
         [HttpGet("admin/users")]
         public IActionResult UserAll()
@@ -157,14 +157,7 @@ namespace ProjectTracker.Controllers
             return RedirectToAction("UserPage");
         }
 
-//----------------End of Users--------------------
 
-
-
-//---------------Tickets---------------------------
-
-
-//--------------End of Tickets---------------------
 
 
 //----------------------------------------------------------

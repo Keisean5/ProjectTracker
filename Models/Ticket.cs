@@ -27,5 +27,7 @@ namespace ProjectTracker.Models
         public Project TicketFor {get;set;}
 
         public List<Comment> PostedComments {get;set;}
+
+        public List<Assign> AssignedTickets {get;set;}
     }
 }
