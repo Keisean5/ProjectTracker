@@ -38,10 +38,7 @@
                 <td>@ticket.MadeBy.FirstName</td>
                     <td>Incomplete</td>
                 <td>
-                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">Details</a> 
-                    | Edit | 
-                    <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button>
-                    </form>
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">More Details</a> 
                     </td>
             </tr>
             }
@@ -77,9 +74,7 @@
                 <td>@ticket.MadeBy.FirstName</td>
                 <td>Complete</td>
                 <td>
-                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">Details</a> 
-                    | Edit | <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@project.ProjectTitle" asp-controller="Ticket" method="post"><button>Delete</button>
-                    </form>
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">More Details</a> 
                     </td>
             </tr>
             }
