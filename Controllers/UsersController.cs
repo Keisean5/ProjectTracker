@@ -58,7 +58,7 @@ namespace ProjectTracker.Controllers
             HttpContext.Session.SetInt32("UserId", userToCreate.UserId);
 
             //note that we're sending the user to a different controller
-            return RedirectToAction("UserProfile", "Home");
+            return RedirectToAction("MyProfile", "Home");
         }
 
         [HttpPost("users/login")]
@@ -97,7 +97,7 @@ namespace ProjectTracker.Controllers
 
             //put the user ID into session
             HttpContext.Session.SetInt32("UserId", foundUser.UserId);
-            return RedirectToAction("UserProfile", "Home");
+            return RedirectToAction("MyProfile", "Home");
         }
 
         [HttpGet("users/logout")]

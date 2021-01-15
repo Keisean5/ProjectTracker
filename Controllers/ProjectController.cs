@@ -22,6 +22,28 @@ namespace ProjectTracker.Controllers
             _context = myContext;
         }
 
+        [HttpGet("projects")]
+        public IActionResult ProjectsAll()//Main Page
+        {
+
+            // Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            //protects the page from non-logged in users
+            if(userId == null) // no user present
+            {
+                return RedirectToAction("LoginReg", "Users");
+            }
+
+            ViewBag.User = _context.Users
+                .Find(userId);
+
+            ViewBag.AllProjects = _context.Projects
+                .Include(proj => proj.PostBy)
+                .ToList();
+
+            return View();
+        }
+
         [HttpGet("project/new")] //Will be for Admins Only
         public IActionResult ProjectNew()
         {

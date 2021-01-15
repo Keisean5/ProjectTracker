@@ -2,7 +2,10 @@
     User user = ViewBag.User;
 }
 
-<a asp-action="UserProfile">Home</a>
+@if(user.Admin == "Admin"){
+<a asp-action="ProjectsAll" asp-controller="Project">Projects</a> 
+<a asp-action="UserAll">View Users</a>
+}
 
 <h1>First Name = @user.FirstName</h1>
 <h1>Last Name = @user.LastName</h1>
@@ -12,11 +15,8 @@
 <a asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
 
 
+
 <h1>Assigned Tickets:</h1>
-
-
-
-
 <table class="table table-striped">
     <thead>
         <tr>

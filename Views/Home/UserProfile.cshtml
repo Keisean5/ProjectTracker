@@ -1,9 +1,9 @@
 @* ViewBag.User *@
 
-<p>Hi @ViewBag.User.FirstName!</p>
+@* <p>Hi @ViewBag.User.FirstName!</p>
 <h1>Home Page</h1>
 <br>
-<a asp-action="MyProfile" asp-route-id="@ViewBag.User.UserId">My Profile</a>
+<a asp-action="MyProfile">My Profile</a>
 |
 <a asp-action="Logout" asp-controller="Users">Log Out</a>
 |
@@ -33,4 +33,7 @@
             }
     </tbody>
 </table>
-<a asp-action="ProjectNew" asp-controller="Project">Create New Project</a>
+<a asp-action="ProjectNew" asp-controller="Project">Create New Project</a> *@
+
+<h1>Change this Route!</h1>
+<a asp-action="ProjectsAll" asp-controller="Project"><h1>Click Here!!</h1></a>

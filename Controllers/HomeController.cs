@@ -106,8 +106,8 @@ namespace ProjectTracker.Controllers
         return View(userToEdit);
         }
 
-        [HttpGet("profile/{id}")]
-        public IActionResult MyProfile(int id)
+        [HttpGet("profile/")]
+        public IActionResult MyProfile()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             //protects the page from non-logged in users
@@ -117,7 +117,7 @@ namespace ProjectTracker.Controllers
             }
 
             ViewBag.User = _context.Users
-                .Find(id);
+                .Find(userId);
 
             ViewBag.AssignedTickets = _context.Tickets
                 .Include(user => user.MadeBy)
