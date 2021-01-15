@@ -11,6 +11,7 @@
 <p>@ticket.TicketDescription</p>
 <h4>Priority: @ticket.TicketPriority</h4>
 <h4>Status: @ticket.TicketStatus</h4>
+<h4>Assigned To: @ticket.UserAssigned</h4>
 <h4>Create At: @ticket.CreatedAt.ToString("M/d/yyyy")</h4>
 <h4>Update At: @ticket.UpdatedAt.ToString("M/d/yyyy")</h4>
 
@@ -35,13 +36,17 @@
 <br>
 <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" method="post"><button>Delete</button></form>
 
-@* Add a Ticket history *@
-
+<br>
+<br>
+<partial name="AssignForm"></partial>
 <br>
 <br>
 <h3>Comments</h3>
 
 @model Comment
+
+
+
 @foreach(Comment comment in ViewBag.AllComments)
     {
     @if(comment.TicketId == ticket.TicketId)

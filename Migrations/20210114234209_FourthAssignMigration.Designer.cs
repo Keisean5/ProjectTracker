@@ -2,20 +2,58 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectTracker.Models;
 
 namespace ProjectTracker.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20210114234209_FourthAssignMigration")]
+    partial class FourthAssignMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("ProjectTracker.Models.Assign", b =>
+                {
+                    b.Property<int>("AssignId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AdminAssigning")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("AssignedTicketTicketId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AssignedUserUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("TicketIdAssigned")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserIdAssigned")
+                        .HasColumnType("int");
+
+                    b.HasKey("AssignId");
+
+                    b.HasIndex("AssignedTicketTicketId");
+
+                    b.HasIndex("AssignedUserUserId");
+
+                    b.ToTable("Assigns");
+                });
 
             modelBuilder.Entity("ProjectTracker.Models.Comment", b =>
                 {
@@ -104,9 +142,6 @@ namespace ProjectTracker.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("UserAssigned")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -153,6 +188,17 @@ namespace ProjectTracker.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ProjectTracker.Models.Assign", b =>
+                {
+                    b.HasOne("ProjectTracker.Models.Ticket", "AssignedTicket")
+                        .WithMany("AssignedTickets")
+                        .HasForeignKey("AssignedTicketTicketId");
+
+                    b.HasOne("ProjectTracker.Models.User", "AssignedUser")
+                        .WithMany("AssignedUsers")
+                        .HasForeignKey("AssignedUserUserId");
                 });
 
             modelBuilder.Entity("ProjectTracker.Models.Comment", b =>

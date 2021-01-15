@@ -9,6 +9,5 @@ namespace ProjectTracker.Models
         public DbSet<Project> Projects {get;set;}
         public DbSet<Ticket> Tickets {get;set;}
         public DbSet<Comment> Comments {get;set;}
-        public DbSet<Assign> Assigns {get;set;}
     }
 }

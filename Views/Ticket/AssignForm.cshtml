@@ -1,0 +1,16 @@
+@model Ticket
+
+<form asp-action="Assign" method="post">
+    <div class="form-group">
+        <label asp-for="UserAssigned"></label>
+        <select asp-for="UserAssigned">
+            @foreach(var user in ViewBag.AllUsers)
+            {
+                <option value="@user.FirstName">@user.FirstName</option>
+            }
+        </select>
+        <span asp-validation-for="UserAssigned" class="text-danger"></span>
+    </div>
+    
+<button>Assign</button>
+</form>

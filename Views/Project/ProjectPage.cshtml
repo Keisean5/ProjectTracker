@@ -23,6 +23,7 @@
             <th>Created</th>
             <th>Updated</th>
             <th>Posted By</th>
+            <th>Assigned To</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -36,7 +37,8 @@
                 <td>@ticket.CreatedAt.ToString("M/d/yyyy")</td>
                 <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
                 <td>@ticket.MadeBy.FirstName</td>
-                    <td>Incomplete</td>
+                <td>@ticket.UserAssigned</td>
+                <td>Incomplete</td>
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">More Details</a> 
                     </td>
@@ -59,6 +61,7 @@
             <th>Created</th>
             <th>Updated</th>
             <th>Posted By</th>
+            <th>Assigned To</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -72,6 +75,7 @@
                 <td>@ticket.CreatedAt.ToString("M/d/yyy")</td>
                 <td>@ticket.UpdatedAt.ToString("M/d/yyy")</td>
                 <td>@ticket.MadeBy.FirstName</td>
+                <td>@ticket.UserAssigned</td>
                 <td>Complete</td>
                 <td>
                     <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">More Details</a> 

@@ -14392,6 +14392,11 @@
   "RootNamespace": "ProjectTracker",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket\\AssignForm.cshtml",
+      "TargetPath": "Views\\Ticket\\AssignForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Project\\ProjectNew.cshtml",
       "TargetPath": "Views\\Project\\ProjectNew.cshtml",
       "FileKind": "mvc"

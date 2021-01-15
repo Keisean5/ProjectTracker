@@ -17,6 +17,7 @@ namespace ProjectTracker.Models
         public string TicketPriority {get;set;}
 
         public string TicketStatus {get;set;} = "Open";
+        public string UserAssigned {get;set;}
 
         public DateTime CreatedAt {get;set;} = DateTime.Now.Date;
         public DateTime UpdatedAt {get;set;} = DateTime.Now.Date;
@@ -28,6 +29,5 @@ namespace ProjectTracker.Models
 
         public List<Comment> PostedComments {get;set;}
 
-        public List<Assign> AssignedTickets {get;set;}
     }
 }

@@ -10,3 +10,44 @@
 <h1>Role = @user.Admin</h1>
 
 <a asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
+
+
+<h1>Assigned Tickets:</h1>
+
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ticket Title</th>
+            <th>Priority</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Posted By</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach(Ticket ticket in ViewBag.AssignedTickets)
+    {
+        @if(user.FirstName == "ViewBag.AssignedTickets.UserAssigned")
+{
+            <tr>
+                <td>@ticket.TicketTitle</td>
+                <td>@ticket.TicketPriority</td>
+                <td>@ticket.CreatedAt.ToString("M/d/yyyy")</td>
+                <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
+                <td>@ticket.MadeBy.FirstName</td>
+                <td>@ticket.UserAssigned</td>
+                <td>Incomplete</td>
+                <td>
+                    <a asp-action="TicketPage" asp-route-id="@ticket.TicketId" asp-controller="Ticket" asp-controller="Comment">More Details</a> 
+                    </td>
+            </tr>
+    }
+    }
+    </tbody>
+</table>

@@ -113,6 +113,9 @@ namespace ProjectTracker.Controllers
 
             ViewBag.User = _context.Users
                 .Find(id);
+
+            ViewBag.AssignedTickets = _context.Tickets
+                .ToList();
         
         return View();
         }

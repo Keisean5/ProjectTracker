@@ -47,6 +47,5 @@ namespace ProjectTracker.Models
         public List<Project> PostedProjects {get;set;}
         public List<Ticket> PostedTickets {get;set;}
         public List<Comment> PostedComments {get;set;}
-        public List<Assign> AssignedUsers {get;set;}
     }
 }

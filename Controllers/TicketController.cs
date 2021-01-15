@@ -94,6 +94,9 @@ namespace ProjectTracker.Controllers
                 .Include(user => user.CommentBy)
                 .ToList();
 
+            ViewBag.AllUsers = _context.Users
+                .ToList();
+
 
         return View();
         }
@@ -174,6 +177,7 @@ namespace ProjectTracker.Controllers
             ticketToUpdate.TicketStatus = ticket.TicketStatus;
             ticketToUpdate.UserId = ticket.UserId;
             ticketToUpdate.ProjectId = ticket.ProjectId;
+            ticketToUpdate.UserAssigned = ticket.UserAssigned;
 
             ticket.UpdatedAt = DateTime.Now;
 
@@ -212,6 +216,28 @@ namespace ProjectTracker.Controllers
             _context.SaveChanges();
             Console.WriteLine("A Comment was made");
             return Redirect($"/project/{project.ProjectTitle}/ticket/{commentToCreate.TicketId}");
+        }
+
+        [HttpPost("project/{name}/ticket/{id}/assign")]
+        public IActionResult Assign(Ticket ticketToUpdate,string name, int id)
+        {
+            var ticket = _context.Tickets
+                .Find(id);
+
+            ticketToUpdate.TicketTitle = ticket.TicketTitle;
+            ticketToUpdate.TicketDescription = ticket.TicketDescription;
+            ticketToUpdate.TicketPriority = ticket.TicketPriority;
+            ticketToUpdate.TicketStatus = ticket.TicketStatus;
+            ticketToUpdate.UserId = ticket.UserId;
+            ticketToUpdate.ProjectId = ticket.ProjectId;
+
+            ticket.UserAssigned = ticketToUpdate.UserAssigned;
+            ticket.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+            Console.WriteLine($"{ticketToUpdate.UserAssigned} was Assigned to {ticket.TicketTitle}");
+            return RedirectToAction("TicketPage");
         }
     }
 }
