@@ -71,7 +71,7 @@ namespace ProjectTracker.Controllers
         }
 
         [HttpGet("project/{name}/ticket/{id}")]
-        public IActionResult TicketPage(string name,int id)
+        public IActionResult TicketPage(string name, int id)
         {
             //Protects page info
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -81,7 +81,6 @@ namespace ProjectTracker.Controllers
             }
 
             ViewBag.Ticket = _context.Tickets
-                .Include(tick => tick.TicketFor)
                 .FirstOrDefault(tick => tick.TicketId == id);
 
             ViewBag.Project = _context.Projects

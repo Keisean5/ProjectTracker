@@ -22,3 +22,76 @@
     </div>
 <button>Update</button>
 </form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ticket Title</th>
+            <th>Priority</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Posted By</th>
+            <th>Assigned To</th>
+            <th>Project</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach(Ticket ticket in ViewBag.AssignedTickets)
+            {
+                @if(ticket.UserAssigned == user.FirstName && ticket.TicketStatus == "Open")
+                {
+                    <tr>
+                        <td>@ticket.TicketTitle</td>
+                        <td>@ticket.TicketPriority</td>
+                        <td>@ticket.CreatedAt.ToString("M/d/yyyy")</td>
+                        <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
+                        <td>@ticket.MadeBy.FirstName</td>
+                        <td>@ticket.UserAssigned</td>
+                        <td>@ticket.TicketFor.ProjectTitle</td>
+                        <td>
+                            <a asp-action="TicketPage" asp-route-name="@ticket.TicketFor.ProjectTitle"asp-route-id="@ticket.TicketId" asp-controller="Ticket">More Details</a> 
+                            </td>
+                    </tr>
+                }
+            }
+    </tbody>
+</table>
+<br>
+<br>
+<h1>Tickets Completed</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ticket Title</th>
+            <th>Priority</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Posted By</th>
+            <th>Assigned To</th>
+            <th>Project</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Ticket ticket in ViewBag.AssignedTickets)
+        {
+            @if(ticket.UserAssigned == user.FirstName && ticket.TicketStatus == "Closed")
+            {
+                <tr>
+                    <td>@ticket.TicketTitle</td>
+                    <td>@ticket.TicketPriority</td>
+                    <td>@ticket.CreatedAt.ToString("M/d/yyyy")</td>
+                    <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
+                    <td>@ticket.MadeBy.FirstName</td>
+                    <td>@ticket.UserAssigned</td>
+                    <td>@ticket.TicketFor.ProjectTitle</td>
+                    <td>
+                        <a asp-action="TicketPage" asp-route-name="@ticket.TicketFor.ProjectTitle"asp-route-id="@ticket.TicketId" asp-controller="Ticket">More Details</a> 
+                        </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -79,6 +79,11 @@ namespace ProjectTracker.Controllers
 
             ViewBag.SelectedUser = _context.Users
                 .FirstOrDefault(user => user.UserId == id);
+
+            ViewBag.AssignedTickets = _context.Tickets
+                .Include(user => user.MadeBy)
+                .Include(project => project.TicketFor)
+                .ToList();
         
         return View();
         }
@@ -115,6 +120,8 @@ namespace ProjectTracker.Controllers
                 .Find(id);
 
             ViewBag.AssignedTickets = _context.Tickets
+                .Include(user => user.MadeBy)
+                .Include(project => project.TicketFor)
                 .ToList();
         
         return View();
