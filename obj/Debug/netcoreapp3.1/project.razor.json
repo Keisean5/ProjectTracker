@@ -14412,6 +14412,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\AdminDashboard.cshtml",
+      "TargetPath": "Views\\Home\\AdminDashboard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Project\\ProjectsAll.cshtml",
       "TargetPath": "Views\\Project\\ProjectsAll.cshtml",
       "FileKind": "mvc"
@@ -14434,11 +14439,6 @@
     {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Users\\LoginForm.cshtml",
       "TargetPath": "Views\\Users\\LoginForm.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Home\\UserProfile.cshtml",
-      "TargetPath": "Views\\Home\\UserProfile.cshtml",
       "FileKind": "mvc"
     },
     {

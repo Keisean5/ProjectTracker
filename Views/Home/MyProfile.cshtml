@@ -5,7 +5,11 @@
 @if(user.Admin == "Admin"){
 <a asp-action="ProjectsAll" asp-controller="Project">Projects</a> 
 <a asp-action="UserAll">View Users</a>
-}
+<a asp-action="Logout" asp-controller="Users">Log Out</a>
+<br>
+<partial name="AdminDashboard.cshtml"/>
+}else{
+
 
 <h1>First Name = @user.FirstName</h1>
 <h1>Last Name = @user.LastName</h1>
@@ -89,3 +93,4 @@
         }
     </tbody>
 </table>
+}

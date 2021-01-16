@@ -3,7 +3,10 @@
     User user = ViewBag.SelectedUser;
 }
 <a asp-action="ProjectsAll" asp-controller="Project">Projects</a>
+|
 <a asp-action="UserAll">Back To Users</a>
+|
+<a asp-action="Logout" asp-controller="Users">Log Out</a>
 
 
 <h1>First Name: @user.FirstName</h1>
