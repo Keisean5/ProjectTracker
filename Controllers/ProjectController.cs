@@ -38,7 +38,6 @@ namespace ProjectTracker.Controllers
                 .Find(userId);
 
             ViewBag.AllProjects = _context.Projects
-                .Include(proj => proj.PostBy)
                 .ToList();
 
             return View();
@@ -57,6 +56,9 @@ namespace ProjectTracker.Controllers
             //Allows to show the name on the View Page if Needed
             ViewBag.User = _context.Users
                 .Find(userId);
+
+            ViewBag.AdminNames = _context.Users
+                .ToList();
         
         return View();
         }
@@ -78,7 +80,6 @@ namespace ProjectTracker.Controllers
                 return View("ProjectNew");
             }
 
-            projectToCreate.UserId = HttpContext.Session.GetInt32("UserId").GetValueOrDefault();
 
             _context.Add(projectToCreate);
             _context.SaveChanges();
@@ -96,7 +97,6 @@ namespace ProjectTracker.Controllers
             }
             
             ViewBag.Project = _context.Projects
-                .Include(proj => proj.PostBy)
                 .FirstOrDefault(proj => proj.ProjectTitle == name);
 
             ViewBag.User = _context.Users
@@ -124,6 +124,9 @@ namespace ProjectTracker.Controllers
                 .FirstOrDefault(proj => proj.ProjectTitle == name);
 
             ViewBag.ProjectToEdit = ProjectToEdit;
+
+            ViewBag.AdminNames = _context.Users
+                .ToList();
         
         return View(ProjectToEdit);
         }
@@ -136,9 +139,8 @@ namespace ProjectTracker.Controllers
 
             project.ProjectTitle = projectToUpdate.ProjectTitle;
             project.ProjectDescription = projectToUpdate.ProjectDescription;
+            project.AdminAssigned = projectToUpdate.AdminAssigned;
             project.UpdatedAt = DateTime.Now;
-
-            projectToUpdate.UserId = project.UserId;
 
             _context.SaveChanges();
         

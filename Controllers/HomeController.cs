@@ -23,27 +23,26 @@ namespace ProjectTracker.Controllers
             _context = myContext;
         }
 
-        [HttpGet("home")]
-        public IActionResult UserProfile()//Main Page
-        {
+        // [HttpGet("home")]
+        // public IActionResult UserProfile()//Main Page
+        // {
 
-            // Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            //protects the page from non-logged in users
-            if(userId == null) // no user present
-            {
-                return RedirectToAction("LoginReg", "Users");
-            }
+        //     // Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
+        //     int? userId = HttpContext.Session.GetInt32("UserId");
+        //     //protects the page from non-logged in users
+        //     if(userId == null) // no user present
+        //     {
+        //         return RedirectToAction("LoginReg", "Users");
+        //     }
 
-            ViewBag.User = _context.Users
-                .Find(userId);
+        //     ViewBag.User = _context.Users
+        //         .Find(userId);
 
-            ViewBag.AllProjects = _context.Projects
-                .Include(proj => proj.PostBy)
-                .ToList();
+        //     ViewBag.AllProjects = _context.Projects
+        //         .ToList();
 
-            return View();
-        }
+        //     return View();
+        // }
 
 
 
@@ -126,7 +125,6 @@ namespace ProjectTracker.Controllers
                 .ToList();
 
             ViewBag.AllProjects = _context.Projects
-                .Include(ticket => ticket.PostedTicket)
                 .ToList();
 
             ViewBag.AllUsers = _context.Users
