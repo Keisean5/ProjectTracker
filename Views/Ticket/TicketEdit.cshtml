@@ -1,6 +1,6 @@
 @model Ticket
 
-<a asp-action="UserProfile">Home</a>
+<a asp-action="MyProfile" asp-controller="Home">Home</a>
 
 <h1>Edit @ViewBag.TicketToEdit.TicketTitle</h1>
 
@@ -26,3 +26,5 @@
     </div>
 <button>Update</button>
 </form>
+<br>
+<a asp-action="TicketPage" asp-controller="Ticket"><button>Cancel</button></a>

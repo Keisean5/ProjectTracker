@@ -31,7 +31,7 @@
     }
 <br>
 <br>
-<a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Project"><button>Edit</button></a>
+<a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Ticket"><button>Edit</button></a>
 <br>
 <br>
 <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" method="post"><button>Delete</button></form>
