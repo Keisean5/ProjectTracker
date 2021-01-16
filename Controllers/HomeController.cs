@@ -59,6 +59,7 @@ namespace ProjectTracker.Controllers
             }
 
             ViewBag.AllUsers = _context.Users
+                .OrderBy(name => name.Admin)
                 .ToList();
         
         return View();
@@ -172,6 +173,19 @@ namespace ProjectTracker.Controllers
             _context.SaveChanges();
         
             return RedirectToAction("UserPage");
+        }
+
+        [HttpPost("user/{id}/delete")]
+        public IActionResult DeleteUser(int id)
+        {
+            var userToDelete =_context.Users
+                .Find(id);
+
+            _context.Users.Remove(userToDelete);
+            _context.SaveChanges();
+
+            Console.WriteLine($"User: {userToDelete.FirstName}, {userToDelete.LastName} has Been Deleted");
+            return RedirectToAction("UserAll");
         }
 
 
