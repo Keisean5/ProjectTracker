@@ -123,6 +123,13 @@ namespace ProjectTracker.Controllers
                 .Include(user => user.MadeBy)
                 .Include(project => project.TicketFor)
                 .ToList();
+
+            ViewBag.AllProjects = _context.Projects
+                .Include(ticket => ticket.PostedTicket)
+                .ToList();
+
+            ViewBag.AllUsers = _context.Users
+                .ToList();
         
         return View();
         }

@@ -2,21 +2,18 @@
     User user = ViewBag.User;
 }
 
-@if(user.Admin == "Admin"){
-<a asp-action="ProjectsAll" asp-controller="Project">Projects</a> 
-<a asp-action="UserAll">View Users</a>
 <a asp-action="Logout" asp-controller="Users">Log Out</a>
 <br>
+
+@if(user.Admin == "Admin"){
 <partial name="AdminDashboard.cshtml"/>
 }else{
 
 
-<h1>First Name = @user.FirstName</h1>
-<h1>Last Name = @user.LastName</h1>
-<h1>Email = @user.Email</h1>
-<h1>Role = @user.Admin</h1>
-
+<h1>Hello, @user.FirstName @user.LastName!</h1>
+<h4>Email: @user.Email</h4>
 <a asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
+
 
 
 
@@ -46,7 +43,7 @@
                         <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
                         <td>@ticket.MadeBy.FirstName</td>
                         <td>@ticket.UserAssigned</td>
-                        <td>@ticket.TicketFor.ProjectTitle</td>
+                        <td><a asp-action="ProjectPage" asp-controller="Project" asp-route-name="@ticket.TicketFor.ProjectTitle">@ticket.TicketFor.ProjectTitle</a></td>
                         <td>
                             <a asp-action="TicketPage" asp-route-name="@ticket.TicketFor.ProjectTitle"asp-route-id="@ticket.TicketId" asp-controller="Ticket">More Details</a> 
                             </td>

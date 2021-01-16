@@ -2,8 +2,17 @@
     User user = ViewBag.User;
 }
 
-<h1>This is the Admin DashBoard!</h1>
-<h1>First Name = @user.FirstName</h1>
-<h1>Last Name = @user.LastName</h1>
-<h1>Email = @user.Email</h1>
-<h1>Role = @user.Admin</h1>
+<h1>DashBoard</h1>
+<h1>Hello, @user.FirstName @user.LastName!</h1>
+<h4>Email: @user.Email</h4>
+<a asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
+<br>
+<br>
+
+<h1><a asp-action="ProjectsAll" asp-controller="Project">Projects</a></h1>
+<br>
+<h3>Number of Projects = @ViewBag.AllProjects.Count</h3>
+<br>
+<h1><a asp-action="UserAll" asp-controller="Home">Users</a></h1>
+<br>
+<h3>Number of Users = @ViewBag.AllUsers.Count</h3>

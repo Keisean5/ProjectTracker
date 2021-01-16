@@ -13,7 +13,7 @@
 <h4>@project.ProjectDescription</h4>
 <br>
 <br>
-<a asp-action="ProjectEdit" asp-route-name="@project.ProjectTitle">Edit Project</a>
+
 <br>
 <h1>Incomplete Tickets</h1>
 <br>
@@ -49,7 +49,7 @@
         }
     </tbody>
 </table>
-<a asp-action="TicketNew" asp-route-name="@project.ProjectTitle" asp-controller="Ticket">Create Ticket</a>
+
 <br>
 
 <br>
@@ -89,5 +89,17 @@
 </table>
 <br>
 <br>
-<form asp-action="DeleteTicket" asp-route-name="@project.ProjectTitle" method="post"><button>Delete</button>
+@if(ViewBag.User.Admin == "Admin"){
+
+
+<a asp-action="TicketNew" asp-route-name="@project.ProjectTitle" asp-controller="Ticket"><button>Create Ticket</button></a>
+<br>
+<br>
+<br>
+<a asp-action="ProjectEdit" asp-route-name="@project.ProjectTitle"><button>Edit Project</button></a>
+<br>
+<br>
+<br>
+<form asp-action="DeleteTicket" asp-route-name="@project.ProjectTitle" method="post"><button>Delete Project</button>
 </form>
+}

@@ -17,7 +17,21 @@
 <h4>Create At: @ticket.CreatedAt.ToString("M/d/yyyy")</h4>
 <h4>Update At: @ticket.UpdatedAt.ToString("M/d/yyyy")</h4>
 
-@if(ticket.TicketStatus == "Open")
+@if(ViewBag.User.Admin == "Admin")
+{
+    <br>
+    <partial name="AssignForm"></partial>
+    <br>
+    <a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Ticket"><button>Edit</button></a>
+    <br>
+    <br>
+    <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" method="post"><button>Delete</button></form>
+}
+<br>
+<br>
+@if(ViewBag.User.FirstName == ticket.UserAssigned)
+{
+    @if(ticket.TicketStatus == "Open")
     {
         <h1>Status: Incomplete</h1>
         <form asp-action="TicketComplete" asp-route-id="@ticket.TicketId" method="Post">
@@ -31,15 +45,7 @@
         <button>Incomplete</button>
         </form>
     }
-<br>
-<br>
-<a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Ticket"><button>Edit</button></a>
-<br>
-<br>
-<form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" method="post"><button>Delete</button></form>
-
-<br>
-<partial name="AssignForm"></partial>
+}
 <br>
 <br>
 <h3>Comments</h3>
