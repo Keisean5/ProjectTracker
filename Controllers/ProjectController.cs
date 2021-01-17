@@ -68,7 +68,7 @@ namespace ProjectTracker.Controllers
         {
             if(!ModelState.IsValid)
             {
-                return View("NewProject");
+                return View("ProjectNew");
             }
 
             //Project Already in DB
