@@ -15,17 +15,18 @@
         <input asp-for="ProjectDescription"  class="form-control">
         <span asp-validation-for="ProjectDescription" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    @* <div class="form-group">
         <label asp-for="AdminAssigned"></label>
         <select asp-for="AdminAssigned" class="form-control">
-            @foreach(var admin in ViewBag.AdminNames){
+            <option value="">Select an Admin</option>
+            @foreach(User admin in ViewBag.AdminNames){
             @if(admin.Admin == "Admin"){
                 <option value="@admin.FirstName">@admin.FirstName</option>
                 }
             }
         </select>
         <span asp-validation-for="AdminAssigned" class="text-danger"></span>
-    </div>
+    </div> *@
     
 <button>Create</button>
 </form>

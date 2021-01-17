@@ -99,49 +99,6 @@ namespace ProjectTracker.Controllers
         }
 
 
-        [HttpPost("project/{name}/ticket/{id}/complete")]
-        public IActionResult TicketComplete(Ticket ticketToComplete, string name, int id)
-        {
-            var ticket = _context.Tickets
-                .Find(id);
-
-            ticketToComplete.TicketTitle = ticket.TicketTitle;
-            ticketToComplete.TicketDescription = ticket.TicketDescription;
-            ticketToComplete.TicketPriority = ticket.TicketPriority;
-            ticketToComplete.ProjectId = ticket.ProjectId;
-
-            ticket.TicketStatus = "Closed";
-
-            ticket.UpdatedAt = DateTime.Now;
-
-            _context.SaveChanges();
-
-
-            return RedirectToAction("TicketPage");
-        }
-
-        [HttpPost("project/{name}/ticket/{id}/incomplete")]
-        public IActionResult TicketIncomplete(Ticket ticketToIncomplete, string name, int id)
-        {
-            var ticket = _context.Tickets
-                .Find(id);
-
-            ticketToIncomplete.TicketTitle = ticket.TicketTitle;
-            ticketToIncomplete.TicketDescription = ticket.TicketDescription;
-            ticketToIncomplete.TicketPriority = ticket.TicketPriority;
-            ticketToIncomplete.ProjectId = ticket.ProjectId;
-
-            ticket.TicketStatus = "Open";
-
-            ticket.UpdatedAt = DateTime.Now;
-
-            _context.SaveChanges();
-
-
-            return RedirectToAction("TicketPage");
-        }
-
-
         [HttpGet("project/{name}/ticket/{id}/edit")]
         public IActionResult TicketEdit(string name, int id)
         {
@@ -193,6 +150,52 @@ namespace ProjectTracker.Controllers
             Console.WriteLine("A Ticket has been Deleted");
             return RedirectToAction("ProjectPage", "Project");
         }
+
+
+        [HttpPost("project/{name}/ticket/{id}/complete")]
+        public IActionResult TicketComplete(Ticket ticketToComplete, string name, int id)
+        {
+            var ticket = _context.Tickets
+                .Find(id);
+
+            ticketToComplete.TicketTitle = ticket.TicketTitle;
+            ticketToComplete.TicketDescription = ticket.TicketDescription;
+            ticketToComplete.TicketPriority = ticket.TicketPriority;
+            ticketToComplete.ProjectId = ticket.ProjectId;
+
+            ticket.TicketStatus = "Closed";
+
+            ticket.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("TicketPage");
+        }
+
+        [HttpPost("project/{name}/ticket/{id}/incomplete")]
+        public IActionResult TicketIncomplete(Ticket ticketToIncomplete, string name, int id)
+        {
+            var ticket = _context.Tickets
+                .Find(id);
+
+            ticketToIncomplete.TicketTitle = ticket.TicketTitle;
+            ticketToIncomplete.TicketDescription = ticket.TicketDescription;
+            ticketToIncomplete.TicketPriority = ticket.TicketPriority;
+            ticketToIncomplete.ProjectId = ticket.ProjectId;
+
+            ticket.TicketStatus = "Open";
+
+            ticket.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("TicketPage");
+        }
+
+
+
 
         [HttpPost("project/{name}/ticket/{id}/comment/create")]
         public IActionResult CreateComment(Comment commentToCreate, string name, int id)

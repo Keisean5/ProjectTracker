@@ -23,28 +23,6 @@ namespace ProjectTracker.Controllers
             _context = myContext;
         }
 
-        // [HttpGet("home")]
-        // public IActionResult UserProfile()//Main Page
-        // {
-
-        //     // Console.WriteLine(HttpContext.Session.GetInt32("UserId"));
-        //     int? userId = HttpContext.Session.GetInt32("UserId");
-        //     //protects the page from non-logged in users
-        //     if(userId == null) // no user present
-        //     {
-        //         return RedirectToAction("LoginReg", "Users");
-        //     }
-
-        //     ViewBag.User = _context.Users
-        //         .Find(userId);
-
-        //     ViewBag.AllProjects = _context.Projects
-        //         .ToList();
-
-        //     return View();
-        // }
-
-
 
         [HttpGet("admin/users")]
         public IActionResult UserAll()
