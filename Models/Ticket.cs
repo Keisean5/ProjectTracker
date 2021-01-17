@@ -22,8 +22,6 @@ namespace ProjectTracker.Models
         public DateTime CreatedAt {get;set;} = DateTime.Now.Date;
         public DateTime UpdatedAt {get;set;} = DateTime.Now.Date;
 
-        public int UserId {get;set;}
-        public User MadeBy {get;set;}
         public int ProjectId {get;set;}
         public Project TicketFor {get;set;}
 

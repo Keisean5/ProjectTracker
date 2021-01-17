@@ -54,8 +54,6 @@ namespace ProjectTracker.Controllers
             //     return View("TicketNew", ticketToCreate);
             // }
 
-            //Assign User who Posted the Ticket
-            ticketToCreate.UserId = HttpContext.Session.GetInt32("UserId").GetValueOrDefault();
 
             //Grab project id
             var project = _context.Projects
@@ -110,7 +108,6 @@ namespace ProjectTracker.Controllers
             ticketToComplete.TicketTitle = ticket.TicketTitle;
             ticketToComplete.TicketDescription = ticket.TicketDescription;
             ticketToComplete.TicketPriority = ticket.TicketPriority;
-            ticketToComplete.UserId = ticket.UserId;
             ticketToComplete.ProjectId = ticket.ProjectId;
 
             ticket.TicketStatus = "Closed";
@@ -132,7 +129,6 @@ namespace ProjectTracker.Controllers
             ticketToIncomplete.TicketTitle = ticket.TicketTitle;
             ticketToIncomplete.TicketDescription = ticket.TicketDescription;
             ticketToIncomplete.TicketPriority = ticket.TicketPriority;
-            ticketToIncomplete.UserId = ticket.UserId;
             ticketToIncomplete.ProjectId = ticket.ProjectId;
 
             ticket.TicketStatus = "Open";
@@ -174,7 +170,6 @@ namespace ProjectTracker.Controllers
             ticket.TicketPriority = ticketToUpdate.TicketPriority;
             
             ticketToUpdate.TicketStatus = ticket.TicketStatus;
-            ticketToUpdate.UserId = ticket.UserId;
             ticketToUpdate.ProjectId = ticket.ProjectId;
             ticketToUpdate.UserAssigned = ticket.UserAssigned;
 
@@ -227,7 +222,6 @@ namespace ProjectTracker.Controllers
             ticketToUpdate.TicketDescription = ticket.TicketDescription;
             ticketToUpdate.TicketPriority = ticket.TicketPriority;
             ticketToUpdate.TicketStatus = ticket.TicketStatus;
-            ticketToUpdate.UserId = ticket.UserId;
             ticketToUpdate.ProjectId = ticket.ProjectId;
 
             ticket.UserAssigned = ticketToUpdate.UserAssigned;

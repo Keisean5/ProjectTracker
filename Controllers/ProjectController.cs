@@ -104,7 +104,6 @@ namespace ProjectTracker.Controllers
 
             //List of Tickets
             ViewBag.ProjectTickets = _context.Tickets
-                .Include(user => user.MadeBy)
                 .ToList();
         
         return View();

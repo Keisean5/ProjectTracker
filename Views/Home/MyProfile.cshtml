@@ -25,7 +25,6 @@
             <th>Priority</th>
             <th>Created</th>
             <th>Updated</th>
-            <th>Posted By</th>
             <th>Assigned To</th>
             <th>Project</th>
             <th>Actions</th>
@@ -41,7 +40,6 @@
                         <td>@ticket.TicketPriority</td>
                         <td>@ticket.CreatedAt.ToString("M/d/yyyy")</td>
                         <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
-                        <td>@ticket.MadeBy.FirstName</td>
                         <td>@ticket.UserAssigned</td>
                         <td><a asp-action="ProjectPage" asp-controller="Project" asp-route-name="@ticket.TicketFor.ProjectTitle">@ticket.TicketFor.ProjectTitle</a></td>
                         <td>
@@ -63,7 +61,6 @@
             <th>Priority</th>
             <th>Created</th>
             <th>Updated</th>
-            <th>Posted By</th>
             <th>Assigned To</th>
             <th>Project</th>
             <th>Actions</th>
@@ -79,7 +76,6 @@
                     <td>@ticket.TicketPriority</td>
                     <td>@ticket.CreatedAt.ToString("M/d/yyyy")</td>
                     <td>@ticket.UpdatedAt.ToString("M/d/yyyy")</td>
-                    <td>@ticket.MadeBy.FirstName</td>
                     <td>@ticket.UserAssigned</td>
                     <td>@ticket.TicketFor.ProjectTitle</td>
                     <td>
