@@ -72,5 +72,6 @@ C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Ticket\TicketEdit.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Ticket\TicketNew.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Ticket\TicketPage.cshtml.g.cs
-C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Ticket\AssignForm.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminDashboard.cshtml.g.cs
+C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Ticket\TicketAssignForm.cshtml.g.cs
+C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Project\ProjectAssignForm.cshtml.g.cs

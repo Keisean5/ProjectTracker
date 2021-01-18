@@ -52,6 +52,9 @@ namespace ProjectTracker.Controllers
             {
                 return RedirectToAction("LoginReg", "Users");
             }
+
+            ViewBag.AllUsers = _context.Users
+                .ToList();
             
             ViewBag.Project = _context.Projects
                 .FirstOrDefault(proj => proj.ProjectTitle == name);
@@ -197,6 +200,24 @@ namespace ProjectTracker.Controllers
 
             _context.SaveChanges();
         
+            return RedirectToAction("ProjectPage");
+        }
+
+        [HttpPost("project/{name}/assign")]
+        public IActionResult AssignAdmin(Project projectToAssign, string name)
+        {
+            var project = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
+
+            projectToAssign.ProjectTitle = project.ProjectTitle;
+            projectToAssign.ProjectDescription = project.ProjectDescription;
+            projectToAssign.ProjectStatus = project.ProjectStatus;
+
+            project.AdminAssigned = projectToAssign.AdminAssigned;
+            project.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+            Console.WriteLine("Admin was Assigned");
             return RedirectToAction("ProjectPage");
         }
 

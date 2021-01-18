@@ -4,6 +4,7 @@
     <div class="form-group">
         <label asp-for="UserAssigned"></label>
         <select asp-for="UserAssigned">
+            <option value="">--Select User--</option>
             @foreach(var user in ViewBag.AllUsers)
             {
                 <option value="@user.FirstName">@user.FirstName</option>

@@ -1,0 +1,20 @@
+@model Project
+
+<form asp-action="AssignAdmin" method="post">
+    <div class="form-group">
+        <label asp-for="AdminAssigned"></label>
+        <select asp-for="AdminAssigned">
+            <option value="">--Select Admin--</option>
+            @foreach(var admin in ViewBag.AllUsers)
+            {
+                @if(admin.Admin == "Admin")
+                {
+                    <option value="@admin.FirstName">@admin.FirstName</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="AdminAssigned" class="text-danger"></span>
+    </div>
+    
+<button>Assign</button>
+</form>

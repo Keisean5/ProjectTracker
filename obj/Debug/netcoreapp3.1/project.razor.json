@@ -14392,8 +14392,8 @@
   "RootNamespace": "ProjectTracker",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket\\AssignForm.cshtml",
-      "TargetPath": "Views\\Ticket\\AssignForm.cshtml",
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Project\\ProjectAssignForm.cshtml",
+      "TargetPath": "Views\\Project\\ProjectAssignForm.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14454,6 +14454,11 @@
     {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket\\TicketAssignForm.cshtml",
+      "TargetPath": "Views\\Ticket\\TicketAssignForm.cshtml",
       "FileKind": "mvc"
     },
     {

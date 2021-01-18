@@ -13,6 +13,7 @@
 <h4>@project.ProjectDescription</h4>
 <br>
 <br>
+<h3>Admin Assigned: @project.AdminAssigned</h3>
 @if(ViewBag.User.Admin == "Admin")
 {
     @if(project.ProjectStatus == "Incomplete")
@@ -102,7 +103,10 @@
 <br>
 @if(ViewBag.User.Admin == "Admin"){
 
-
+<partial name="ProjectAssignForm"></partial>
+<br>
+<br>
+<br>
 <a asp-action="TicketNew" asp-route-name="@project.ProjectTitle" asp-controller="Ticket"><button>Create Ticket</button></a>
 <br>
 <br>

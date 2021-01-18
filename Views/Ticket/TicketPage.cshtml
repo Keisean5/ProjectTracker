@@ -20,7 +20,7 @@
 @if(ViewBag.User.Admin == "Admin")
 {
     <br>
-    <partial name="AssignForm"></partial>
+    <partial name="TicketAssignForm"></partial>
     <br>
     <a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Ticket"><button>Edit</button></a>
     <br>
