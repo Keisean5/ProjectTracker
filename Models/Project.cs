@@ -17,7 +17,7 @@ namespace ProjectTracker.Models
 
         public string AdminAssigned {get;set;}
 
-        public string ProjectStatus {get;set;} //if there are bugs, show "Bugs" else show "Complete" - ADD LATER
+        public string ProjectStatus {get;set;} = "Incomplete";
 
         public DateTime CreatedAt {get;set;} = DateTime.Now.Date;
         public DateTime UpdatedAt {get;set;} = DateTime.Now.Date;

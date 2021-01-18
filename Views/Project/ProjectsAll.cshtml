@@ -21,7 +21,7 @@
         <tr>
             <td>@project.ProjectTitle</td>
             <td>@project.AdminAssigned</td>
-            <td>Incomplete</td>
+            <td>@project.ProjectStatus</td>
             <td>@project.CreatedAt.ToString("M/d/yyy")</td>
             <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle"
             asp-controller="Project">More Details</a>

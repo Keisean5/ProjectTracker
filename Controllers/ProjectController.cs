@@ -43,6 +43,29 @@ namespace ProjectTracker.Controllers
             return View();
         }
 
+        [HttpGet("project/{name}")]
+                public IActionResult ProjectPage(string name)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            //protects the page from non-logged in users
+            if(userId == null) // no user present
+            {
+                return RedirectToAction("LoginReg", "Users");
+            }
+            
+            ViewBag.Project = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
+
+            ViewBag.User = _context.Users
+                .Find(HttpContext.Session.GetInt32("UserId"));
+
+            //List of Tickets
+            ViewBag.ProjectTickets = _context.Tickets
+                .ToList();
+        
+        return View();
+        }
+
         [HttpGet("project/new")] //Will be for Admins Only
         public IActionResult ProjectNew()
         {
@@ -86,28 +109,8 @@ namespace ProjectTracker.Controllers
         
             return Redirect($"/project/{projectToCreate.ProjectTitle}");
         }
-        [HttpGet("project/{name}")]
-        public IActionResult ProjectPage(string name)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            //protects the page from non-logged in users
-            if(userId == null) // no user present
-            {
-                return RedirectToAction("LoginReg", "Users");
-            }
-            
-            ViewBag.Project = _context.Projects
-                .FirstOrDefault(proj => proj.ProjectTitle == name);
-
-            ViewBag.User = _context.Users
-                .Find(HttpContext.Session.GetInt32("UserId"));
-
-            //List of Tickets
-            ViewBag.ProjectTickets = _context.Tickets
-                .ToList();
         
-        return View();
-        }
+
 
         [HttpGet("project/{name}/edit")]
         public IActionResult ProjectEdit(string name)
@@ -158,6 +161,44 @@ namespace ProjectTracker.Controllers
             return RedirectToAction("ProjectsAll");
         }
 
+        [HttpPost("project/{name}/complete")]
+        public IActionResult ProjectComplete(Project projectToComplete, string name)
+        {
+            var project = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
+
+            projectToComplete.ProjectTitle = project.ProjectTitle;
+            projectToComplete.ProjectDescription = project.ProjectDescription;
+            projectToComplete.AdminAssigned = project.AdminAssigned;
+            
+            project.ProjectStatus = "Complete";
+            
+            project.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+        
+            return RedirectToAction("ProjectPage");
+        }
+
+
+        [HttpPost("project/{name}/incomplete")]
+        public IActionResult ProjectIncomplete(Project projectToIncomplete, string name)
+        {
+            var project = _context.Projects
+                .FirstOrDefault(proj => proj.ProjectTitle == name);
+
+            projectToIncomplete.ProjectTitle = project.ProjectTitle;
+            projectToIncomplete.ProjectDescription = project.ProjectDescription;
+            projectToIncomplete.AdminAssigned = project.AdminAssigned;
+            
+            project.ProjectStatus = "Incomplete";
+            
+            project.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+        
+            return RedirectToAction("ProjectPage");
+        }
 
     }
 }

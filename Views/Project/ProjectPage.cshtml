@@ -13,7 +13,22 @@
 <h4>@project.ProjectDescription</h4>
 <br>
 <br>
-
+@if(ViewBag.User.Admin == "Admin")
+{
+    @if(project.ProjectStatus == "Incomplete")
+    {
+        <h1>Status: Incomplete</h1>
+        <form asp-action="ProjectComplete" asp-route-id="@project.ProjectId" method="Post">
+        <button>Complete</button>
+        </form>
+    }else if(project.ProjectStatus == "Complete")
+    {
+        <h1>Status: Complete</h1>
+        <form asp-action="ProjectIncomplete" asp-route-id="@project.ProjectId" method="Post">
+        <button>Incomplete</button>
+        </form>
+    }
+}
 <br>
 <h1>Incomplete Tickets</h1>
 <br>
