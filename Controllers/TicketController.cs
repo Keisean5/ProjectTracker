@@ -46,18 +46,17 @@ namespace ProjectTracker.Controllers
         [HttpPost("project/{name}/ticket/create")]
         public IActionResult CreateTicket(Ticket ticketToCreate, string name)
         {
-            // if(!ModelState.IsValid)
-            // {
-            //     ViewBag.Project = _context.Projects
-            //         .Find(id);
-            //     ticketToCreate.ProjectId = id;
-            //     return View("TicketNew", ticketToCreate);
-            // }
-
-
             //Grab project id
             var project = _context.Projects
                 .FirstOrDefault(proj => proj.ProjectTitle == name);
+            
+            if(!ModelState.IsValid)
+            {
+                ViewBag.Project = project;
+                return View("TicketNew");
+            }
+
+
             //Assign ticket to Project
             ticketToCreate.ProjectId = project.ProjectId;
 
@@ -119,6 +118,15 @@ namespace ProjectTracker.Controllers
         [HttpPost("project/{name}/ticket/update/{id}")]
         public IActionResult UpdateTicket(Ticket ticketToUpdate,string name, int id)
         {
+
+            if(!ModelState.IsValid)
+            {
+                ViewBag.TicketToEdit = _context.Tickets
+                    .Find(id);
+                return View("TicketEdit");
+            }
+
+
             var ticket = _context.Tickets
                 .Find(id);
 

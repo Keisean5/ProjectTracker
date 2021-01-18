@@ -155,7 +155,7 @@ namespace ProjectTracker.Controllers
             _context.Projects.Remove(projectToDelete);
             _context.SaveChanges();
         
-            return RedirectToAction("UserProfile", "Home");
+            return RedirectToAction("ProjectsAll");
         }
 
 
