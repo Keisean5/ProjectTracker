@@ -116,7 +116,7 @@ namespace ProjectTracker.Controllers
         }
 
         [HttpPost("project/{name}/ticket/update/{id}")]
-        public IActionResult UpdateTicket(Ticket ticketToUpdate,string name, int id)
+        public IActionResult UpdateTicket(Ticket ticketToUpdate, string name, int id)
         {
 
             if(!ModelState.IsValid)
@@ -224,7 +224,7 @@ namespace ProjectTracker.Controllers
         }
 
         [HttpPost("project/{name}/ticket/{id}/assign")]
-        public IActionResult Assign(Ticket ticketToUpdate,string name, int id)
+        public IActionResult Assign(Ticket ticketToUpdate, string name, int id)
         {
             var ticket = _context.Tickets
                 .Find(id);

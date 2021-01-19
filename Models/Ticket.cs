@@ -12,10 +12,12 @@ namespace ProjectTracker.Models
 
         [Display(Name = "Ticket Title")]
         [Required(ErrorMessage="Title Must Be Provided")]
+        [MinLength(2, ErrorMessage = "Title must be 2 characters or longer!")]
         public string TicketTitle {get;set;}
 
         [Display(Name = "Ticket Description")]
         [Required(ErrorMessage="Describe Ticket")]
+        [MinLength(10, ErrorMessage = "Description must be 10 characters or longer!")]
         public string TicketDescription {get;set;}
 
         [Display(Name = "Ticket Priority")]
