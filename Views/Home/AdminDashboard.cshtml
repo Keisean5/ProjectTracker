@@ -1,20 +1,36 @@
 @{
     User user = ViewBag.User;
 }
-<nav class="navbar navbar-light bg-light">
-    <a asp-action="Logout" asp-controller="Users">Log Out</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h4 class="navbar-brand">Hello, @user.FirstName @user.LastName!</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link"asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Users">Log Out</a>
+            </li>
+        </ul>
+    </div>
 </nav>
-<h1>DashBoard</h1>
-<h1>Hello, @user.FirstName @user.LastName!</h1>
+
+
+<h1 class="text-center">DashBoard</h1>
+
 <h4>Email: @user.Email</h4>
-<a asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
+
 <br>
 <br>
 
 <h1><a asp-action="ProjectsAll" asp-controller="Project">Projects</a></h1>
-<br>
+
 <h3>Number of Projects = @ViewBag.AllProjects.Count</h3>
-<br>
+
 <h1><a asp-action="UserAll" asp-controller="Home">Users</a></h1>
-<br>
+
 <h3>Number of Users = @ViewBag.AllUsers.Count</h3>

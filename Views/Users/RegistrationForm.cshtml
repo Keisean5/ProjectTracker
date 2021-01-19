@@ -1,6 +1,6 @@
 @model User
 
-<h1>Register Here to Get Started On Your Project!</h1>
+<h1 class="text-center">Register Here to Get Started On Your Project!</h1>
 <br>
 <br>
 <form asp-action="Register" method="post" class="row g-3">
@@ -14,17 +14,17 @@
         <input asp-for="LastName" class="form-control">
         <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-3">
         <label asp-for="Email"></label>
         <input asp-for="Email" class="form-control">
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-3">
         <label asp-for="Password"></label>
         <input asp-for="Password" class="form-control">
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-3">
         <label asp-for="Confirm"></label>
         <input asp-for="Confirm" class="form-control">
         <span asp-validation-for="Confirm" class="text-danger"></span>

@@ -48,7 +48,6 @@ C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Users\LoginForm.cshtml.g.cs
-C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Users\LoginReg.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\Users\RegistrationForm.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\seank\Desktop\Coding_Dojo\CSharp\ProjectTracker\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs

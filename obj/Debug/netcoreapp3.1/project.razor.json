@@ -14502,11 +14502,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Users\\LoginReg.cshtml",
-      "TargetPath": "Views\\Users\\LoginReg.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\seank\\Desktop\\Coding_Dojo\\CSharp\\ProjectTracker\\Views\\Ticket\\TicketNew.cshtml",
       "TargetPath": "Views\\Ticket\\TicketNew.cshtml",
       "FileKind": "mvc"
