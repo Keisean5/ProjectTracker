@@ -1,7 +1,9 @@
 @{
     User user = ViewBag.User;
 }
-
+<nav class="navbar navbar-light bg-light">
+    <a asp-action="Logout" asp-controller="Users">Log Out</a>
+</nav>
 <h1>DashBoard</h1>
 <h1>Hello, @user.FirstName @user.LastName!</h1>
 <h4>Email: @user.Email</h4>

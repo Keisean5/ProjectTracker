@@ -2,13 +2,13 @@
     User user = ViewBag.User;
 }
 
-<a asp-action="Logout" asp-controller="Users">Log Out</a>
-<br>
 
 @if(user.Admin == "Admin"){
 <partial name="AdminDashboard.cshtml"/>
 }else{
 
+<a asp-action="Logout" asp-controller="Users">Log Out</a>
+<br>
 
 <h1>Hello, @user.FirstName @user.LastName!</h1>
 <h4>Email: @user.Email</h4>

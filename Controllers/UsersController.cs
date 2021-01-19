@@ -23,7 +23,13 @@ namespace ProjectTracker.Controllers
 
 
         [HttpGet("")]
-        public IActionResult LoginReg()
+        public IActionResult LoginForm()
+        {
+            return View();
+        }
+
+        [HttpGet("register")]
+        public IActionResult RegistrationForm()
         {
             return View();
         }
@@ -35,7 +41,7 @@ namespace ProjectTracker.Controllers
             if(!ModelState.IsValid)
             {
                 //invalid data coming in
-                return View("LoginReg");
+                return View("LoginForm");
             }
             
             var existingUser = _context.Users
@@ -45,7 +51,7 @@ namespace ProjectTracker.Controllers
             {
                 //email already in the DB
                 ModelState.AddModelError("Email", "Email unavailable.");
-                return View("LoginReg");
+                return View("LoginForm");
             }
 
             PasswordHasher<User> Hasher = new PasswordHasher<User>();
@@ -67,7 +73,7 @@ namespace ProjectTracker.Controllers
             //check validation state(optional)
             if(!ModelState.IsValid)
             {
-                return View("LoginReg");
+                return View("LoginForm");
             }
             //check the DB for the email
             var foundUser = _context.Users
@@ -78,7 +84,7 @@ namespace ProjectTracker.Controllers
                 //not in DB
                 Console.WriteLine("User wasn't found");
                 ModelState.AddModelError("LoginPassword", "Please check your email/password.");
-                return View("LoginReg");
+                return View("LoginForm");
             }
 
             //compare the plaintext password to what's stored in the DB
@@ -92,7 +98,7 @@ namespace ProjectTracker.Controllers
                 //password doesn't match
                 Console.WriteLine("password not matching");
                 ModelState.AddModelError("LoginPassword", "Please check your email/password.");
-                return View("LoginReg");
+                return View("LoginForm");
             }
 
             //put the user ID into session
@@ -106,7 +112,7 @@ namespace ProjectTracker.Controllers
             //clears the Session
             HttpContext.Session.Clear();
             
-            return RedirectToAction("LoginReg");
+            return RedirectToAction("LoginForm");
         }
     }
 }

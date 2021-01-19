@@ -29,7 +29,7 @@ namespace ProjectTracker.Controllers
             int? userId = HttpContext.Session.GetInt32("UserId");
             if(userId == null)
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             var projectId = _context.Projects
@@ -74,7 +74,7 @@ namespace ProjectTracker.Controllers
             int? userId = HttpContext.Session.GetInt32("UserId");
             if(userId == null)
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             ViewBag.Ticket = _context.Tickets
@@ -104,7 +104,7 @@ namespace ProjectTracker.Controllers
             int? userId = HttpContext.Session.GetInt32("UserId");
             if(userId == null)
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             var TicketToEdit = _context.Tickets

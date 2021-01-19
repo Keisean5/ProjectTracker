@@ -32,7 +32,7 @@ namespace ProjectTracker.Controllers
             //protects the page from non-logged in users
             if(userId == null) // no user present
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             ViewBag.AllUsers = _context.Users
@@ -49,7 +49,7 @@ namespace ProjectTracker.Controllers
             //protects the page from non-logged in users
             if(userId == null) // no user present
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
             
             ViewBag.User = _context.Users
@@ -72,7 +72,7 @@ namespace ProjectTracker.Controllers
             //protects the page from non-logged in users
             if(userId == null) // no user present
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             var userToEdit = _context.Users
@@ -90,7 +90,7 @@ namespace ProjectTracker.Controllers
             //protects the page from non-logged in users
             if(userId == null) // no user present
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             ViewBag.User = _context.Users

@@ -31,7 +31,7 @@ namespace ProjectTracker.Controllers
             //protects the page from non-logged in users
             if(userId == null) // no user present
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             ViewBag.User = _context.Users
@@ -50,7 +50,7 @@ namespace ProjectTracker.Controllers
             //protects the page from non-logged in users
             if(userId == null) // no user present
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             ViewBag.AllUsers = _context.Users
@@ -76,7 +76,7 @@ namespace ProjectTracker.Controllers
             int? userId = HttpContext.Session.GetInt32("UserId");
             if(userId == null)
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             //Allows to show the name on the View Page if Needed
@@ -122,7 +122,7 @@ namespace ProjectTracker.Controllers
             //protects the page from non-logged in users
             if(userId == null) // no user present
             {
-                return RedirectToAction("LoginReg", "Users");
+                return RedirectToAction("LoginForm", "Users");
             }
 
             var ProjectToEdit = _context.Projects

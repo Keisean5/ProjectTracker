@@ -1,30 +1,35 @@
 @model User
 
-<form asp-action="Register" method="post">
-    <div class="form-group">
+<h1>Register Here to Get Started On Your Project!</h1>
+<br>
+<br>
+<form asp-action="Register" method="post" class="row g-3">
+    <div class="col-md-6">
         <label asp-for="FirstName"></label>
         <input asp-for="FirstName" class="form-control">
         <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="col-md-6">
         <label asp-for="LastName"></label>
         <input asp-for="LastName" class="form-control">
         <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="col-12">
         <label asp-for="Email"></label>
         <input asp-for="Email" class="form-control">
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="col-12">
         <label asp-for="Password"></label>
         <input asp-for="Password" class="form-control">
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="col-12">
         <label asp-for="Confirm"></label>
         <input asp-for="Confirm" class="form-control">
         <span asp-validation-for="Confirm" class="text-danger"></span>
     </div>
-    <button>Submit</button>
+    <div class="col-12 mt-3">
+        <button class="btn btn-primary">Submit</button>
+    </div>
 </form>
