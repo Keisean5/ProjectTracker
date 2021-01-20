@@ -1,33 +1,45 @@
 @{
     User user = ViewBag.User;
 }
-
-
 @if(user.Admin == "Admin"){
 <partial name="AdminDashboard.cshtml"/>
 }else{
 
-<a asp-action="Logout" asp-controller="Users">Log Out</a>
-<br>
 
-<h1>Hello, @user.FirstName @user.LastName!</h1>
-<h4>Email: @user.Email</h4>
-<a asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h4 class="navbar-brand">Hello, @user.FirstName @user.LastName!</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link"asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Users">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1 class="text-center">Your Assignments</h1>
 
 
 
 <h1>Assigned Tickets:</h1>
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-dark">
         <tr>
-            <th>Ticket Title</th>
-            <th>Priority</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Assigned To</th>
-            <th>Project</th>
-            <th>Actions</th>
+            <th scope="col">Ticket Title</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Created</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Assigned To</th>
+            <th scope="col">Project</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -55,15 +67,15 @@
 <h1>Tickets Completed</h1>
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-dark">
         <tr>
-            <th>Ticket Title</th>
-            <th>Priority</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Assigned To</th>
-            <th>Project</th>
-            <th>Actions</th>
+            <th scope="col">Ticket Title</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Created</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Assigned To</th>
+            <th scope="col">Project</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
