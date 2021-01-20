@@ -1,13 +1,12 @@
 @model LoginUser
 
 
-<h1 class="text-center">Welcome to Project Tracker!</h1>
+<h1 class="text-center mt-3">Welcome to Project Tracker!</h1>
+
+<h3 class="mt-3">Please Log In!</h3>
 <br>
 
-<h3>Please Log In!</h3>
-<br>
-
-<form asp-action="Login" method="post">
+<form asp-action="Login" method="post" class="mt-3">
     <div class="row mb-3 ">
         <label asp-for="LoginEmail" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
@@ -22,8 +21,8 @@
         </div>
         <span asp-validation-for="LoginPassword" class="text-danger"></span>
     </div>
-        <button class="btn btn-primary">Log In</button>
+        <button class="btn btn-primary mt-2">Log In</button>
 </form>
 <br>
-<br>
+
 <a asp-action="RegistrationForm">Register Here!</a>

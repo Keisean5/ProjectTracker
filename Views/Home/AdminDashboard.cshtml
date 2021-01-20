@@ -20,11 +20,12 @@
 </nav>
 
 
-<h1 class="text-center">Admin DashBoard</h1>
+    <h1 class="text-center mt-3">Admin DashBoard</h1>
+
 
 
 <div class="d-flex justify-content-around">
-    <div class="card" style="width: 18rem;">
+    <div class="card mt-3" style="width: 18rem;">
         <div class="card-header">
             <h2>
                 Projects: @ViewBag.AllProjects.Count
@@ -39,11 +40,10 @@
         </ul>
         <div class="card-body">
             <a asp-action="ProjectsAll" asp-controller="Project" class="card-link">View Projects</a>
-            <a asp-action="ProjectNew" asp-controller="Project" class="card-link">Create Project</a>
         </div>
     </div>
     
-    <div class="card" style="width: 18rem;">
+    <div class="card mt-3" style="width: 18rem;">
         <div class="card-header">
             <h2>Users: @ViewBag.AllUsers.Count</h2>
         </div>

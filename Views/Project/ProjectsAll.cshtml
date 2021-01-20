@@ -1,35 +1,101 @@
-@* This page will be for Admin *@
-<p>Hi @ViewBag.User.FirstName!</p>
-<h1>All Projects</h1>
+@{
+    User user = ViewBag.User;
+}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h4 class="navbar-brand">Hello, @user.FirstName @user.LastName!</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="MyProfile" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserAll" asp-controller="Home" class="card-link">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserProfileUpdate" asp-route-id="@user.UserId" asp-controller="Home">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Users">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<h1 class="text-center mt-3">All Projects</h1>
 <br>
-<a asp-action="MyProfile" asp-controller="Home">My Profile</a>
-|
-<a asp-action="Logout" asp-controller="Users">Log Out</a>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Admin</th>
-            <th>Status</th>
-            <th># of Tickets</th>
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+
+<a asp-action="ProjectNew" asp-controller="Project"><button type="button" class="btn btn-primary btn-sm mb-5">Create New Project</button></a>
+
+
+    <h1>Projects: Incomplete</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Admin</th>
+                <th>Status</th>
+                <th># of Tickets</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach(Project project in ViewBag.AllProjects)
             {
-        <tr>
-            <td>@project.ProjectTitle</td>
-            <td>@project.AdminAssigned</td>
-            <td>@project.ProjectStatus</td>
-            <td>@project.PostedTicket.Count</td>
-            <td>@project.CreatedAt.ToString("M/d/yyy")</td>
-            <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle"
-            asp-controller="Project">More Details</a>
-            </td>
-        </tr>
+                @if(project.ProjectStatus == "Incomplete")
+                {
+                <tr>
+                    <td>@project.ProjectTitle</td>
+                    <td>@project.AdminAssigned</td>
+                    <td>@project.ProjectStatus</td>
+                    <td>@project.PostedTicket.Count</td>
+                    <td>@project.CreatedAt.ToString("M/d/yyy")</td>
+                    <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle"
+                    asp-controller="Project">More Details</a>
+                    </td>
+                </tr>
+                }
             }
-    </tbody>
-</table>
-<a asp-action="ProjectNew" asp-controller="Project">Create New Project</a>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <h1>Projects: Complete</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Admin</th>
+                <th>Status</th>
+                <th># of Tickets</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(Project project in ViewBag.AllProjects)
+        {
+            @if(project.ProjectStatus == "Complete")
+            {
+            <tr>
+                <td>@project.ProjectTitle</td>
+                <td>@project.AdminAssigned</td>
+                <td>@project.ProjectStatus</td>
+                <td>@project.PostedTicket.Count</td>
+                <td>@project.CreatedAt.ToString("M/d/yyy")</td>
+                <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle"
+                asp-controller="Project">More Details</a>
+                </td>
+            </tr>
+            }
+        }
+        </tbody>
+    </table>
+

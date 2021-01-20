@@ -129,6 +129,9 @@ namespace ProjectTracker.Controllers
             var ProjectToEdit = _context.Projects
                 .FirstOrDefault(proj => proj.ProjectTitle == name);
 
+            ViewBag.User = _context.Users
+                .Find(userId);
+
             ViewBag.ProjectToEdit = ProjectToEdit;
 
             ViewBag.AdminNames = _context.Users
