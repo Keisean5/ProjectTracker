@@ -27,12 +27,43 @@
 <br>
 <br>
 
-<h1><a asp-action="ProjectsAll" asp-controller="Project">Projects</a>: @ViewBag.AllProjects.Count</h1>
 
-<h3>Number of Projects Incomplete = @ViewBag.IncompleteProjects.Count</h3>
-<h3>Number of Projects Complete = @ViewBag.CompleteProjects.Count</h3>
 
-<h1><a asp-action="UserAll" asp-controller="Home">Users</a>: @ViewBag.AllUsers.Count</h1>
 
-<h3>Number of Admins = @ViewBag.AllAdmins.Count</h3>
-<h3>Number of Users = @ViewBag.Users.Count</h3>
+
+<div class="d-flex justify-content-around">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            <h2>
+                Projects: @ViewBag.AllProjects.Count
+            </h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Projects are created by only Admins. Admins are then assigned to Created Project. Once Projects are Created, Admins may then start creating the Tickets for the Project where they will Assign Team Members to Created Tickets.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Projects Incomplete = @ViewBag.IncompleteProjects.Count</li>
+            <li class="list-group-item">Projects Complete = @ViewBag.CompleteProjects.Count</li>
+        </ul>
+        <div class="card-body">
+            <a asp-action="ProjectsAll" asp-controller="Project" class="card-link">View Projects</a>
+            <a asp-action="ProjectNew" asp-controller="Project" class="card-link">Create Project</a>
+        </div>
+    </div>
+    
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            <h2>Users: @ViewBag.AllUsers.Count</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Once Team Memebers Register, Only an Admin may change their Status to "Admin". Team Members will be assigned Tickets by Admins.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Admins = @ViewBag.AllAdmins.Count</li>
+            <li class="list-group-item">Users = @ViewBag.Users.Count</li>
+        </ul>
+        <div class="card-body">
+            <a asp-action="UserAll" asp-controller="Home" class="card-link">View Users</a>
+        </div>
+    </div>
+</div>
