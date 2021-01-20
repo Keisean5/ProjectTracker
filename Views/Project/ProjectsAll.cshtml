@@ -11,6 +11,7 @@
             <th>Title</th>
             <th>Admin</th>
             <th>Status</th>
+            <th># of Tickets</th>
             <th>Created At</th>
             <th>Actions</th>
         </tr>
@@ -22,6 +23,7 @@
             <td>@project.ProjectTitle</td>
             <td>@project.AdminAssigned</td>
             <td>@project.ProjectStatus</td>
+            <td>@project.PostedTicket.Count</td>
             <td>@project.CreatedAt.ToString("M/d/yyy")</td>
             <td><a asp-action="ProjectPage" asp-route-name="@project.ProjectTitle"
             asp-controller="Project">More Details</a>

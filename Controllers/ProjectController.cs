@@ -38,6 +38,7 @@ namespace ProjectTracker.Controllers
                 .Find(userId);
 
             ViewBag.AllProjects = _context.Projects
+                .Include(ticket => ticket.PostedTicket)
                 .ToList();
 
             return View();

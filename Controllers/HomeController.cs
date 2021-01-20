@@ -100,10 +100,29 @@ namespace ProjectTracker.Controllers
                 .Include(project => project.TicketFor)
                 .ToList();
 
+
+            //For Admin
             ViewBag.AllProjects = _context.Projects
                 .ToList();
 
+            ViewBag.IncompleteProjects = _context.Projects
+                .Where(proj => proj.ProjectStatus == "Incomplete")
+                .ToList();
+            
+            ViewBag.CompleteProjects = _context.Projects
+                .Where(proj => proj.ProjectStatus == "Complete")
+                .ToList();
+
+
+            ViewBag.AllAdmins = _context.Users
+                .Where(admin => admin.Admin == "Admin")
+                .ToList();
+
             ViewBag.AllUsers = _context.Users
+                .ToList();
+            
+            ViewBag.Users = _context.Users
+                .Where(user => user.Admin == "User")
                 .ToList();
         
         return View();

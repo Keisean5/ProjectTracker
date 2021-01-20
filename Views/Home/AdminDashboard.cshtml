@@ -20,17 +20,19 @@
 </nav>
 
 
-<h1 class="text-center">DashBoard</h1>
+<h1 class="text-center">Admin DashBoard</h1>
 
 <h4>Email: @user.Email</h4>
 
 <br>
 <br>
 
-<h1><a asp-action="ProjectsAll" asp-controller="Project">Projects</a></h1>
+<h1><a asp-action="ProjectsAll" asp-controller="Project">Projects</a>: @ViewBag.AllProjects.Count</h1>
 
-<h3>Number of Projects = @ViewBag.AllProjects.Count</h3>
+<h3>Number of Projects Incomplete = @ViewBag.IncompleteProjects.Count</h3>
+<h3>Number of Projects Complete = @ViewBag.CompleteProjects.Count</h3>
 
-<h1><a asp-action="UserAll" asp-controller="Home">Users</a></h1>
+<h1><a asp-action="UserAll" asp-controller="Home">Users</a>: @ViewBag.AllUsers.Count</h1>
 
-<h3>Number of Users = @ViewBag.AllUsers.Count</h3>
+<h3>Number of Admins = @ViewBag.AllAdmins.Count</h3>
+<h3>Number of Users = @ViewBag.Users.Count</h3>
