@@ -42,8 +42,8 @@
         <textarea asp-for="ProjectDescription"  class="form-control" rows="3"></textarea>
         <span asp-validation-for="ProjectDescription" class="text-danger"></span>
     </div>
-<div>
-	<button type="button" class="btn btn-primary">Update</button>
-	<a asp-action="ProjectsPage" asp-route-name="@ViewBag.ProjectToEdit.ProjectTitle"><button type="button" class="btn btn-danger">Cancel</button></a>
-</div>
+    <div>
+        <button class="btn btn-primary">Update</button>
+        <a asp-action="ProjectPage" asp-route-name="@ViewBag.ProjectToEdit.ProjectTitle"><button class="btn btn-danger">Cancel</button></a>
+    </div>
 </form>

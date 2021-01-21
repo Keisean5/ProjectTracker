@@ -95,6 +95,8 @@ namespace ProjectTracker.Controllers
         {
             if(!ModelState.IsValid)
             {
+                ViewBag.User = _context.Users
+                .Find(HttpContext.Session.GetInt32("UserId"));
                 return View("ProjectNew");
             }
 
@@ -183,7 +185,7 @@ namespace ProjectTracker.Controllers
             project.UpdatedAt = DateTime.Now;
 
             _context.SaveChanges();
-        
+            Console.WriteLine("A project has been completed");
             return RedirectToAction("ProjectPage");
         }
 

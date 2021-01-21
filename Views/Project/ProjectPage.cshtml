@@ -31,7 +31,7 @@
 
 
 <div class="d-flex justify-content-center">
-    <div class="card mt-4" style="width: 30rem;">
+    <div class="card mt-4" style="width: 25rem;">
         <div class="card-header">
             <h3>@project.ProjectTitle</h3>
         </div>
@@ -42,18 +42,32 @@
         {
             @if(project.ProjectStatus == "Incomplete")
             {
-                <li class="list-group-item"><h3>Status: Incomplete</h3>
-                <form asp-action="ProjectComplete" asp-route-id="@project.ProjectId" method="Post">
-                <button type="button" class="btn btn-success">Complete</button>
-                </form></li>
+                <li class="list-group-item d-flex justify-content-center">
+                    <h3>Status: Incomplete</h3>
+                    <form asp-action="ProjectComplete" asp-route-name="@project.ProjectTitle" method="Post">
+            <button class="btn btn-success ml-2">Complete</button>
+        </form>
+                </li>
             }
             else if(project.ProjectStatus == "Complete")
                 {
-                <li class="list-group-item"><h3>Status: Complete</h3>
-                <form asp-action="ProjectIncomplete" asp-route-id="@project.ProjectId" method="Post">
-                <button type="button" class="btn btn-danger">Incomplete</button>
-                </form></li>
+                <li class="list-group-item d-flex justify-content-center">
+                    <h3>Status: Complete</h3>
+                    <form asp-action="ProjectIncomplete" asp-route-name="@project.ProjectTitle" method="Post">
+            <button class="btn btn-danger ml-2">Incomplete</button>
+        </form>
+                </li>
                 }
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="TicketNew" asp-route-name="@project.ProjectTitle" asp-controller="Ticket"><button type="button" class="btn btn-primary">Create Ticket</button></a>
+                        
+                        <a asp-action="ProjectEdit" asp-route-name="@project.ProjectTitle"><button type="button" class="btn btn-success">Edit Project</button></a>
+
+                        <form asp-action="DeleteProject" asp-route-name="@project.ProjectTitle" method="post"><button class="btn btn-danger">Delete Project</button>
+                        </form>
+                    </div>
+            </li>
         }
         </ul>
     </div>
@@ -132,12 +146,5 @@
 {
     <partial name="ProjectAssignForm"></partial>
 
-    <div class="d-flex justify-content-around mt-4">
-        <a asp-action="TicketNew" asp-route-name="@project.ProjectTitle" asp-controller="Ticket"><button type="button" class="btn btn-primary">Create Ticket</button></a>
-        
-        <a asp-action="ProjectEdit" asp-route-name="@project.ProjectTitle"><button type="button" class="btn btn-success">Edit Project</button></a>
-        
-        <form asp-action="DeleteProject" asp-route-name="@project.ProjectTitle" method="post"><button type="button" class="btn btn-danger">Delete Project</button>
-        </form>
-    </div>
+
 }
