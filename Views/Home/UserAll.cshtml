@@ -1,13 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h4 class="navbar-brand">Hello, @ViewBag.User.FirstName @ViewBag.User.LastName!</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="MyProfile" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="ProjectsAll" asp-controller="Project" class="card-link">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserProfileUpdate" asp-route-id="@ViewBag.User.UserId" asp-controller="Home">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Users">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1 class="text-center mt-3 mb-3">All Users</h1>
 
 
-<h1>All Users</h1>
-
-<a asp-action="MyProfile">Home</a>
-|
-<a asp-action="Logout" asp-controller="Users">Log Out</a>
-
-<table class="table table-striped">
-    <thead>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
         <tr>
             <th>First Name</th>
             <th>Last Name</th>

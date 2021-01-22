@@ -2,34 +2,70 @@
 @{
     User user = ViewBag.SelectedUser;
 }
-<a asp-action="ProjectsAll" asp-controller="Project">Projects</a>
-|
-<a asp-action="UserAll">Back To Users</a>
-|
-<a asp-action="Logout" asp-controller="Users">Log Out</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h4 class="navbar-brand">Hello, @ViewBag.User.FirstName @ViewBag.User.LastName!</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="MyProfile" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserAll" asp-controller="Home" class="card-link">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="ProjectsAll" asp-controller="Project" class="card-link">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserProfileUpdate" asp-route-id="@ViewBag.User.UserId" asp-controller="Home">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Users">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
+<div class="d-flex justify-content-center">
+    <div class="card mt-4 mb-4" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@user.FirstName @user.LastName</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@user.Admin</h6>
+            <p class="card-text">Email: @user.Email</p>
+            <p class="card-text">Joined at: @user.CreatedAt.ToString("M/d/yyyy")</p>
+            @if(ViewBag.User.Admin == "Admin")
+            {
+            <form asp-action="EditUser" method="post">
+                <div class="form-row align-items-center">
+                    <div class="col-auto my-1">
+                        <select asp-for="Admin" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option value="">--Role--</option>
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                        <span asp-validation-for="Admin" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-auto my-1">
+                    <button class="btn btn-info">Change Role</button>
+                </div>
+            </form>
 
-<h1>First Name: @user.FirstName</h1>
-<h1>Last Name: @user.LastName</h1>
-<h1>Email: @user.Email</h1>
-<h1>Joined at: @user.CreatedAt.ToString("M/d/yyyy")</h1>
-<h1>Role: @user.Admin</h1>
-@if(ViewBag.User.Admin == "Admin")
-{
-    <form asp-action="EditUser" method="post">
-        <div class="form-group">
-            <select asp-for="Admin">
-                <option value="User">User</option>
-                <option value="Admin">Admin</option>
-            </select>
-            <span asp-validation-for="Admin" class="text-danger"></span>
+            <form asp-action="DeleteUser" asp-route-id="@user.UserId" method="post">
+                <button class="btn btn-danger">Delete User</button>
+            </form>
+            }
         </div>
-        <button>Change Role</button>
-    </form>
-}
+    </div>
+</div>
 
-<table class="table table-striped">
-    <thead>
+
+<h1>Tickets Assigned</h1>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
         <tr>
             <th>Ticket Title</th>
             <th>Priority</th>
@@ -64,8 +100,8 @@
 <br>
 <h1>Tickets Completed</h1>
 
-<table class="table table-striped">
-    <thead>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
         <tr>
             <th>Ticket Title</th>
             <th>Priority</th>
@@ -96,11 +132,3 @@
         }
     </tbody>
 </table>
-<br>
-<br>
-@if(ViewBag.User.Admin == "Admin")
-{
-    <form asp-action="DeleteUser" asp-route-id="@user.UserId" method="post">
-<button>Delete User</button>
-</form>
-}

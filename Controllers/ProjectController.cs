@@ -86,6 +86,14 @@ namespace ProjectTracker.Controllers
 
             ViewBag.AdminNames = _context.Users
                 .ToList();
+
+            var user = _context.Users
+                .Find(userId);
+
+            if(user.Admin != "Admin")
+            {
+                return RedirectToAction("LoginForm", "Users");
+            }
         
         return View();
         }
@@ -138,6 +146,14 @@ namespace ProjectTracker.Controllers
 
             ViewBag.AdminNames = _context.Users
                 .ToList();
+                
+            var user = _context.Users
+                .Find(userId);
+
+            if(user.Admin != "Admin")
+            {
+                return RedirectToAction("LoginForm", "Users");
+            }
         
         return View(ProjectToEdit);
         }

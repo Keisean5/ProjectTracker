@@ -1,17 +1,19 @@
 @model Ticket
 
 <form asp-action="Assign" method="post">
-    <div class="form-group">
-        <label asp-for="UserAssigned"></label>
-        <select asp-for="UserAssigned">
-            <option value="">--Select User--</option>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label class="sr-only" asp-for="UserAssigned" for="inlineFormInput"></label>
+            <select asp-for="UserAssigned" class="form-control mb-2" id="inlineFormInput">
+            <option value="">--Select User to Assign--</option>
             @foreach(var user in ViewBag.AllUsers)
             {
                 <option value="@user.FirstName">@user.FirstName</option>
             }
         </select>
-        <span asp-validation-for="UserAssigned" class="text-danger"></span>
+        </div>
+        <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </div>
     </div>
-    
-<button>Assign</button>
 </form>

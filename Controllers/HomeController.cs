@@ -35,6 +35,9 @@ namespace ProjectTracker.Controllers
                 return RedirectToAction("LoginForm", "Users");
             }
 
+            ViewBag.User = _context.Users
+                .Find(userId);
+
             ViewBag.AllUsers = _context.Users
                 .OrderBy(name => name.Admin)
                 .ToList();
@@ -68,6 +71,9 @@ namespace ProjectTracker.Controllers
         [HttpGet("user/update/{id}")]
         public IActionResult UserProfileUpdate(int id)
         {
+            var userToEdit = _context.Users
+                .Find(id);
+
             int? userId = HttpContext.Session.GetInt32("UserId");
             //protects the page from non-logged in users
             if(userId == null) // no user present
@@ -75,8 +81,13 @@ namespace ProjectTracker.Controllers
                 return RedirectToAction("LoginForm", "Users");
             }
 
-            var userToEdit = _context.Users
-                .Find(id);
+            if(userId != userToEdit.UserId) // protects other users from Signed in User
+            {
+                return RedirectToAction("LoginForm", "Users");
+            }
+
+            ViewBag.User = _context.Users
+                .Find(userId);
 
             ViewBag.UserToUpdate = userToEdit;
         

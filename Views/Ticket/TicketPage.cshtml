@@ -2,33 +2,67 @@
     Ticket ticket = ViewBag.Ticket;
 }
 
-<a asp-action="MyProfile" asp-controller="Home">Home</a>
-|
-<a asp-action="ProjectPage" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Project">Project</a>
-|
-<a asp-action="Logout" asp-controller="Users">Log Out</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h4 class="navbar-brand">Hello, @ViewBag.User.FirstName @ViewBag.User.LastName!</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="MyProfile" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserAll" asp-controller="Home" class="card-link">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="ProjectsAll" asp-controller="Project" class="card-link">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserProfileUpdate" asp-route-id="@ViewBag.User.UserId" asp-controller="Home">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Users">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<h1>Title: @ticket.TicketTitle</h1>
-<h3>Description:</h3>
-<p>@ticket.TicketDescription</p>
-<h4>Priority: @ticket.TicketPriority</h4>
-<h4>Status: @ticket.TicketStatus</h4>
-<h4>Assigned To: @ticket.UserAssigned</h4>
-<h4>Create At: @ticket.CreatedAt.ToString("M/d/yyyy")</h4>
-<h4>Update At: @ticket.UpdatedAt.ToString("M/d/yyyy")</h4>
+<div class="d-flex justify-content-center">
+    <div class="card mt-4" style="width: 25rem;">
+        <div class="card-body">
+            <h5 class="card-title">@ticket.TicketTitle</h5>
+            <p class="card-text">@ticket.TicketDescription</p>
+        </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Status: @ticket.TicketStatus</li>
+                <li class="list-group-item">Priority: @ticket.TicketPriority</li>
+                <li class="list-group-item">Assigned To: @ticket.UserAssigned</li>
+                <li class="list-group-item">Create At: @ticket.CreatedAt.ToString("M/d/yyyy")</li>
+                <li class="list-group-item">Update At: @ticket.UpdatedAt.ToString("M/d/yyyy")</li>
+            </ul>
+    @if(ViewBag.User.Admin == "Admin")
+    {
+        <div class="card-body d-flex justify-content-between">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <partial name="TicketAssignForm"></partial>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-around">
+                        <a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Ticket"><button class="btn btn-success">Edit</button></a>
+                        
+                        <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" method="post"><button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    }
+    </div>
+</div>
 
-@if(ViewBag.User.Admin == "Admin")
-{
-    <br>
-    <partial name="TicketAssignForm"></partial>
-    <br>
-    <a asp-action="TicketEdit" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" asp-controller="Ticket"><button>Edit</button></a>
-    <br>
-    <br>
-    <form asp-action="DeleteTicket" asp-route-id="@ticket.TicketId" asp-route-name="@ViewBag.Project.ProjectTitle" method="post"><button>Delete</button></form>
-}
-<br>
-<br>
 @if(ViewBag.User.FirstName == ticket.UserAssigned)
 {
     @if(ticket.TicketStatus == "Open")
@@ -68,10 +102,9 @@
 <br>
 <form asp-action="CreateComment" method="post">
     <div class="form-group">
-        <label asp-for="CommentText"></label>
         <textarea asp-for="CommentText" class="form-control" rows="5" id="comment"></textarea>
         <span asp-validation-for="CommentText" class="text-danger"></span>
     </div>
     
-<button>Comment</button>
+<button class="btn btn-info">Comment</button>
 </form>

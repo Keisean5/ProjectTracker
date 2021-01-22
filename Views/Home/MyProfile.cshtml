@@ -16,7 +16,16 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link"asp-action="UserProfileUpdate" asp-route-id="@user.UserId">Edit Profile</a>
+                <a class="nav-link" asp-action="MyProfile" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserAll" asp-controller="Home" class="card-link">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="ProjectsAll" asp-controller="Project" class="card-link">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="UserProfileUpdate" asp-route-id="@user.UserId" asp-controller="Home">Edit Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" asp-action="Logout" asp-controller="Users">Log Out</a>

@@ -40,6 +40,14 @@ namespace ProjectTracker.Controllers
         
             ViewBag.Project = projectId;
 
+            var user = _context.Users
+                .Find(userId);
+
+            if(user.Admin != "Admin")
+            {
+                return RedirectToAction("LoginForm", "Users");
+            }
+
         return View();
         }
 
@@ -52,6 +60,8 @@ namespace ProjectTracker.Controllers
             
             if(!ModelState.IsValid)
             {
+                ViewBag.User = _context.Users
+                .Find(HttpContext.Session.GetInt32("UserId"));
                 ViewBag.Project = project;
                 return View("TicketNew");
             }
@@ -110,7 +120,18 @@ namespace ProjectTracker.Controllers
             var TicketToEdit = _context.Tickets
                 .Find(id);
 
+            ViewBag.User = _context.Users
+                .Find(userId);
+
             ViewBag.TicketToEdit = TicketToEdit;
+
+            var user = _context.Users
+                .Find(userId);
+
+            if(user.Admin != "Admin")
+            {
+                return RedirectToAction("LoginForm", "Users");
+            }
         
         return View(TicketToEdit);
         }
@@ -123,6 +144,8 @@ namespace ProjectTracker.Controllers
             {
                 ViewBag.TicketToEdit = _context.Tickets
                     .Find(id);
+                ViewBag.User = _context.Users
+                .Find( HttpContext.Session.GetInt32("UserId"));
                 return View("TicketEdit");
             }
 
